@@ -4,8 +4,8 @@ new WOW().init();
 
  var typed = new Typed("#type", {
     strings: [
-      "<span style='color:purple;'>Wildlife Tracker</span>",
-      "<span style='color:purple;'>An application that allows Rangers to track wildlife sightings in the area.</span>"
+      "<span style='color:black;'>Wildlife Tracker</span>",
+      "<span style='color:black;'>An application that allows Rangers to track wildlife sightings in the area on every occurence and record.</span>"
     ],
     backSpeed: 70,
     typeSpeed: 80,
@@ -25,7 +25,7 @@ new WOW().init();
 function secondClick(){
 timer:4000
 Swal.fire(
-  'View Animals?',
+  'Add Animal?',
 )
 }
 
@@ -43,12 +43,6 @@ Swal.fire(
 
 )
 }
-
-
-
-
-
-
 
 // Animations init
 new WOW().init();

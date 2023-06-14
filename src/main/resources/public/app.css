@@ -62,8 +62,8 @@ h5 {
   margin:auto;
 }
 .indexRow{
- padding-bottom:4%;
- padding-top:4%;
+ padding-bottom:3%;
+ padding-top:3%;
 }
 .stylistsTitle{
 padding-bottom:20px;
@@ -85,3 +85,12 @@ margin:auto;
 padding-top:20px;
 
 }
+hr {
+   border-color: yellow;
+   border-width: 2px;
+   font-weight: bold;
+ }
+
+.bg-skyblue {
+    background-color: skyblue;
+ }

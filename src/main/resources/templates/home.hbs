@@ -1,13 +1,12 @@
 {{#partial "title"}}
     The WildLife Tracker App
 {{/partial}}
-
 {{#partial "content"}}
-    <div class="view" style="background-image: url('images/mountain-in-sunset.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;">
+<div class="view" style="background-image: url('images/mountain-in-sunrise.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;">
         <nav class="navbar navbar-expand-lg navbar-dark green fixed-top scrolling-navbar">
             <div class="container">
                 <a class="navbar-brand" href="/">
-                    <strong><span style="color: yellow;">The Wildlife Tracker App</span></strong>
+                    <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span></strong>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -15,18 +14,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link" href="/"><span style="color: yellow;">Home</span> <span class="sr-only">(current)</span></a>
+                            <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/animals"><span style="color: yellow;">Animals</span></a>
+                            <a class="nav-link border border-dark rounded" href="/animals"><span style="color: black;"><strong>Animals</strong></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/sightings"><span style="color: yellow;">Sightings</span></a>
+                            <a class="nav-link border border-dark rounded" href="/sightings"><span style="color: black;"><strong>Sightings</strong></span></a>
                         </li>
                         <li class="nav-item">
-                            <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link  border-light rounded" target="_blank" style="color: yellow; font-size: small;">
-                                <i class="fab fa-github mr-2"></i>GitHub
+                            <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: black; font-size: small;">
+                                <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
                             </a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
                         </li>
                     </ul>
                 </div>
@@ -36,8 +38,8 @@
             <div class="container">
                 <div class="indexRow">
                     <div class="col-md-12 mb-4 white-text text-center">
-                        <h1 class="h1-reponsive text-warning text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 animate shake">
-                            <strong style="color: yellow;"> Wildlife Tracker<i class="fas fa-satellite-dish animate rotateIn infinite"></i></strong>
+                        <h1 class="h1-responsive text-warning text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 animate shake">
+                            <strong style="color: yellow;" class="animate__animated animate__bounceIn fade-in animate__slower animate__delay-2s">Wildlife Animals Tracker<i class="fas fa-satellite-dish animate__animated animate__bounce animate__infinite"></i></strong>
                         </h1>
                         <h4 class="text-monospace  typeClass"><strong id="type"></strong> <i class="fas fa-bolt"></i></h4>
                         <div class="container">
@@ -56,9 +58,10 @@
                                             </a>
                                             <h4 class="card-title" style="color:yellow;"><strong>Regular Animals</strong></h4>
                                             <hr>
-                                            <button class="btn btn-warning btn-lg rounded-pill shadow" onclick="secondClick()" style="color: black;">
-                                                Add Animal<i class="fas fa-angle-double-right"></i>
+                                            <button class="btn btn-warning btn-lg wide border-white rounded-pill shadow" onclick="secondClick()" style="color: black; border-color: white;">
+                                                <strong>Add Animal</strong><i class="fas fa-angle-double-right"></i>
                                             </button>
+                                            <hr>
                                         </div>
                                     </div>
                                 </div>
@@ -76,9 +79,10 @@
                                             </a>
                                             <h4 class="card-title" style="color:yellow;">Endangered Animals</h4>
                                             <hr>
-                                            <button class="btn btn-warning btn-lg rounded-pill shadow" onclick="firstClick()" style="color: black;">
-                                                Add Endangered Animal<i class="fas fa-angle-double-right"></i>
+                                            <button class="btn btn-warning btn-lg wide border-white rounded-pill shadow" onclick="firstClick()" style="color: black; border-color: white;">
+                                                <strong>Add Endangered Animal</strong><i class="fas fa-angle-double-right"></i>
                                             </button>
+                                            <hr>
                                         </div>
                                     </div>
                                 </div>
@@ -94,11 +98,12 @@
                                             <a class="activator waves-effect waves-dark mr-4">
                                                 <i class="fas fa-share-alt" style="color: yellow;"></i>
                                             </a>
-                                            <h4 class="card-title" style="color:yellow;">Sightings</h4>
+                                            <h4 class="card-title" style="color:yellow;">Animal Sightings</h4>
                                             <hr>
-                                            <button class="btn btn-warning btn-lg rounded-pill shadow" onclick="thirdClick()" style="color: black;">
-                                                Record Sighting<i class="fas fa-angle-double-right"></i>
+                                            <button class="btn btn-warning btn-lg wide border-white rounded-pill shadow" onclick="thirdClick()" style="color: black; border-color: white;">
+                                                <strong>Report/Record Sighting</strong><i class="fas fa-angle-double-right"></i>
                                             </button>
+                                            <hr>
                                         </div>
                                     </div>
                                 </div>
