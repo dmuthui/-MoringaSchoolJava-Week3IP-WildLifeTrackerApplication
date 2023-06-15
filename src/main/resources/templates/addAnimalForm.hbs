@@ -1,0 +1,63 @@
+{{#partial "title"}}
+    Add Animal Page
+{{/partial}}
+
+{{#partial "content"}}
+    <nav class="navbar navbar-expand-lg navbar-dark green fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color: yellow;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/add-animal"><span style="color: yellow;"><strong>Animals</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/sightings"><span style="color: yellow"><strong>Sightings</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: yellow; font-size: small;">
+                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color:yellow"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<div class="view" style="background-image: url('/images/addAnimal.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="mask rgba-black-light align-items-center">
+        <div class="container">
+            <div class="indexRow">
+                <div class="col-md-12 mb-4 yellow-text text-center">
+                    <h1 class="h1-reponsive text-warning text-smallcase font-weight-bold mb-0 pt-md-5 pt-5 animated wobble" ><strong>Animal Name:</strong></h1>
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <div class="content">
+                                    <form action="/add-animal" method="post">
+                                        <div class="form-group">
+                                            <label for="animalName"></label>
+                                            <input type="text" id="animalName" name="animalName" class="form-control transparentInputFields">
+                                        </div>
+                                        <button class="btn btn-info black-text-white-border" type="submit" name="add-animal" style="background-color: yellow;"><strong>Add Animal</strong></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/partial}}
+
+{{>layout.hbs}}

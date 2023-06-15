@@ -94,3 +94,9 @@ hr {
 .bg-skyblue {
     background-color: skyblue;
  }
+
+.black-text-white-border {
+  color: black;
+  border-color: white;
+}
+

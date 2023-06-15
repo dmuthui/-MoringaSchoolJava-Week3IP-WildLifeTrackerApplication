@@ -11,7 +11,7 @@ import static spark.Spark.staticFileLocation;
 
 public class App {
     public static void main(String[] args) {
-
+        // To SERVE THE STATIC FILES LOCATION
         staticFileLocation("/public");
 
         //INITIALIZATION OF THE HANDLEBARS
@@ -21,5 +21,21 @@ public class App {
         get("/", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "home.hbs");
         }, engine);
+
+        //THE ROUTE TO SERVE ADD ANIMAL AFTER CLICKING ADD ANIMAL BUTTON
+        get("/add-animal", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "addAnimalForm.hbs");
+        }, engine);
+
+        //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
+        get("/sightings", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
+        }, engine);
+
+        //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
+        get("/add-endangered", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
+        }, engine);
+
     }
 }
