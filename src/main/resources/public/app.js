@@ -16,9 +16,8 @@ $(document).ready(function() {
   });
 
 //FUNCTION THAT GIVES AN ALERT IF YOU WANT TO DELETE A REGULAR ANIMAL
-//AN ALERT THAT POPS WHEN YOU WANT TO DELETE A HERO FROM THE HEROES LIST
  function confirmDeletion(animalName) {
-     var result = confirm("Are you sure you want to delete the regular animal " + animalName + "?");
+     var result = confirm("Are you sure you want to delete the  animal " + animalName + "?");
      if (!result) {
          return false; // Cancel button was clicked, return false to prevent deletion
      }
@@ -26,13 +25,21 @@ $(document).ready(function() {
      window.location.href = "/delete-regularAnimal/" + animalName;
  }
 
- //VALIDATES ADDANIMALFORM DATA ENTRY:SENDS ALERT WHEN YOU CLICK BLANK FORM FOR SUBMISSION
+ //VALIDATES ADD ANIMAL FORM DATA ENTRY:SENDS ALERT WHEN YOU CLICK BLANK FORM FOR SUBMISSION
  function validateForm() {
      var animalName = document.getElementById("animalName").value.toUpperCase().trim(); // Trim whitespace
-
      if (animalName === "") {
          alert("Please fill in all the fields before submitting the form.");
          return false; // Prevent form submission
      }
 
  }
+
+ //VALIDATES ENDANGERED ANIMAL FORM DATA ENTRY:SENDS ALERT WHEN YOU CLICK BLANK FORM FOR SUBMISSION
+  function validatedForm() {
+        var endangeredAnimalName = document.getElementById("endangeredAnimalName").value;
+        if (endangeredAnimalName === "") {
+            alert("Please enter the endangered animal name.");
+            return false; // Prevent form submission
+        }
+    }

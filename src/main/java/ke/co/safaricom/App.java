@@ -84,11 +84,18 @@ public class App {
             return new ModelAndView(endangeredAnimalList, "animalsList.hbs");
         }, engine);
 
+        //DELETING AN ENDANGERED ANIMAL FROM THE ANIMALS LIST PAGE
+        get("/delete-endangeredAnimalName/:endangeredAnimalName", (req, res) -> {
+            String endangeredAnimalName = req.params(":endangeredAnimalName");
+            EndangeredAnimalDao.deleteEndangeredAnimal(endangeredAnimalName);
+            res.redirect("/animal-list");
+            return null;
+        }, engine);
+
         //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
         get("/sightings-list", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
         }, engine);
-
 
         //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {

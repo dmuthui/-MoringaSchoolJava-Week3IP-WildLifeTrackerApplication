@@ -36,12 +36,12 @@ public class EndangeredAnimalDao {
         return allEndangeredAnimals;
     }
 //    //DELETES A ENDAGERED ANIMAL FROM THE DATABASE
-//    public static void deleteRegularAnimal(String animalName){
-//        try(Connection db = Database.getConnect().open()){
-//            String deletedRegularAnimal = "UPDATE regular_animal SET deleted = (true) WHERE animalName = (:animalName);";
-//            db.createQuery(deletedRegularAnimal).addParameter("animalName", animalName).executeUpdate();
-//        } catch (Exception error) {
-//            System.out.println(error.getMessage());
-//        }
-//    }
+    public static void deleteEndangeredAnimal(String endangeredAnimalName){
+        try(Connection db = Database.getConnect().open()){
+            String deletedEndangeredAnimal = "UPDATE endangered_animal SET deleted = (true) WHERE endangeredAnimalName = (:endangeredAnimalName);";
+            db.createQuery(deletedEndangeredAnimal).addParameter("endangeredAnimalName", endangeredAnimalName).executeUpdate();
+        } catch (Exception error) {
+            System.out.println(error.getMessage());
+        }
+    }
 }
