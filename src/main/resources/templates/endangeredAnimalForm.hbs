@@ -17,7 +17,10 @@
                         <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: black;"><strong>Animals</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: black;"><strong>Regular Animals List</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: black;"><strong>Endangered Animals List</strong></span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link border border-dark rounded" href="/sightings-list"><span style="color: black"><strong>Sightings</strong></span></a>
@@ -43,14 +46,14 @@
                         <h3 class="h3-reponsive text-black text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 animated wobble" style="color: yellow;"><strong> Add Endangered Animal: </strong></h3>
                         <div class="row">
                             <div class="col-sm-4 col-sm-offset-4">
-                                <form action="/add-endangered" method="post">
+                                <form action="/add-endangered-animal" method="post">
                                     <div class="form-group">
                                         <label for="endangeredAnimalName" style="color: green;"><strong>ENDANGERED ANIMAL NAME:</strong></label>
                                         <input type="text" name="endangeredAnimalName" class="form-control transparentInputFields">
                                     </div>
                                     <div class="form-group">
                                         <label for="health" style="color: green;"><strong>ENDANGERED ANIMAL HEALTH:</strong></label>
-                                        <select id="health" name="health" type="text" class="form-control transparentInputFields">
+                                        <select id="health" name="health" class="form-control transparentInputFields">
                                             <option value="Healthy">HEALTHY</option>
                                             <option value="Okay">OKAY</option>
                                             <option value="Ill">ILL</option>
@@ -58,13 +61,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="age" style="color: green;"><strong>ENDANGERED ANIMAL AGE:</strong></label>
-                                        <select id="age" name="age" type="text" class="form-control transparentInputFields">
+                                        <select id="age" name="age" class="form-control transparentInputFields">
                                             <option value="Newborn">NEWBORN</option>
                                             <option value="Young">YOUNG</option>
                                             <option value="Adult">ADULT</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-info black-text-white-border" type="submit" name="add-endangered" style="background-color: yellow;"><strong>Add Endangered Animal</strong></button>
+                                    <button class="btn btn-info black-text-white-border" type="submit" name="add-endangered-animal" style="background-color: yellow;"><strong>Add Endangered Animal</strong></button>
                                 </form>
                             </div>
                         </div>

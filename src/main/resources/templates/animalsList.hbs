@@ -18,7 +18,10 @@
                             <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Animals</strong></span></a>
+                            <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: green;"><strong>Regular Animals List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Endangered Animals List</strong></span></a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link border border-dark rounded" href="/sightings-list"><span style="color: green;"><strong>Sightings</strong></span></a>
@@ -32,6 +35,9 @@
                         <li class="nav-item">
                             <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>Add Regular Animal</strong></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>Add Endangered Animal</strong></a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -43,10 +49,10 @@
                         <table class="table table-bordered table-text light-grey">
                             <thead class="thead-green">
                             <tr>
-                                <th><strong>REGULAR ANIMAL NAME</strong></th>
-                                <th><strong>REGULAR ANIMAL HEALTH</strong></th>
-                                <th><strong>REGULAR ANIMAL AGE</strong></th>
-                                <th><strong>DELETE FUNCTION</strong></th>
+                                <th><strong>REGULAR ANIMAL NAME:</strong></th>
+                                <th><strong>REGULAR ANIMAL HEALTH:</strong></th>
+                                <th><strong>REGULAR ANIMAL AGE:</strong></th>
+                                <th><strong>DELETE FUNCTION:</strong></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -67,24 +73,24 @@
                     </div>
                 {{else}}
                     <div class="no-data">
-                        <strong>You currently have no regular animals. Consider adding an animal using the ADD Regular Animal button above!</strong>
+
                     </div>
                 {{/if}}
             </div>
             <div class="table-column">
-                {{#if endageredAnimals}}
+                {{#if endangeredAnimals}}
                     <div class="table-responsive">
                         <table class="table table-bordered table-text light-grey">
                             <thead class="thead-green">
                             <tr>
-                                <th><strong>ENDANGERED ANIMAL NAME</strong></th>
-                                <th><strong>ENDANGERED ANIMAL HEALTH</strong></th>
-                                <th><strong>ENDANGERED ANIMAL AGE</strong></th>
-                                <th><strong>DELETE FUNCTION</strong></th>
+                                <th><strong>ENDANGERED ANIMAL NAME:</strong></th>
+                                <th><strong>ENDANGERED ANIMAL HEALTH:</strong></th>
+                                <th><strong>ENDANGERED ANIMAL AGE:</strong></th>
+                                <th><strong>DELETE FUNCTION:</strong></th>
                             </tr>
                             </thead>
                             <tbody>
-                            {{#each endageredAnimals}}
+                            {{#each endangeredAnimals}}
                                 <tr>
                                     <td><strong>{{endangeredAnimalName}}</strong></td>
                                     <td><strong>{{health}}</strong></td>
@@ -101,7 +107,7 @@
                     </div>
                 {{else}}
                     <div class="no-data">
-                        <strong>You currently have no endangered animals. Consider adding an animal using the ADD Endangered Animal button above!</strong>
+
                     </div>
                 {{/if}}
             </div>

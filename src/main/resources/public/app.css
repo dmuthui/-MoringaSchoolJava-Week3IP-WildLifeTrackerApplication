@@ -136,19 +136,3 @@ h1, h2, p, li, a {
   color: skyblue;
 }
 
-//TO DISPLAY TABLES FOR REGULAR AND ENDANGERED ANIMALS SIDE-TO-SIDE
-.table-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-.table-column {
-    flex: 1;
-    margin-right: 10px;
-}
-
-.table-responsive {
-    max-height: 400px;
-    overflow-y: auto;
-}

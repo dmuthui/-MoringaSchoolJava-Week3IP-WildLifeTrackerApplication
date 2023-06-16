@@ -1,6 +1,8 @@
 package ke.co.safaricom;
 
+import ke.co.safaricom.dao.EndangeredAnimalDao;
 import ke.co.safaricom.dao.RegularAnimalDao;
+import ke.co.safaricom.model.EndangeredAnimal;
 import ke.co.safaricom.model.RegularAnimal;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
@@ -39,21 +41,21 @@ public class App {
             Boolean deleted = false;
             RegularAnimal additionalRegularAnimal = new RegularAnimal(regular_animal_id, animalName, health, age, deleted);
             RegularAnimalDao.addRegularAnimal(additionalRegularAnimal);
-            response.redirect("/animal-list");
+            response.redirect("/regular-animal-list");
             return null;
         });
-       // THE ROUTE TO HANDLE GETTING ALL REGULAR ANIMALS FROM DATABASE ON THE VIEW REGULAR ANIMALS LIST
-        get("/animal-list", (req, res) -> {
+        //THE ROUTE TO HANDLE GETTING ALL REGULAR ANIMALS FROM DATABASE ON THE ANIMALS LIST
+        get("/regular-animal-list", (req, res) -> {
             Map<String, List<RegularAnimal>> regularAnimalList = new HashMap<>();
             regularAnimalList.put("regularAnimals", RegularAnimalDao.getAllRegularAnimals());
-            return new ModelAndView(regularAnimalList, "allAnimals.hbs");
+            return new ModelAndView(regularAnimalList, "animalsList.hbs");
         }, engine);
 
         //DELETING A REGULAR ANIMAL FROM THE ANIMALS LIST PAGE
         get("/delete-regularAnimal/:animalName", (req, res) -> {
             String animalName = req.params(":animalName");
             RegularAnimalDao.deleteRegularAnimal(animalName);
-            res.redirect("/animal-list");
+            res.redirect("/regular-animal-list");
             return null;
         }, engine);
 
@@ -62,8 +64,28 @@ public class App {
             return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
         }, engine);
 
+        //ROUTE TO SERVE POSTING OF ADD ENDANGERED ANIMAL TO THE DATABASE
+        post("/add-endangered-animal", (request, response) -> {
+            // Initializing the regular animal
+            Integer endangered_animal_id = null;
+            String endangeredAnimalName = request.queryParams("endangeredAnimalName");
+            String health = request.queryParams("health");
+            String age = request.queryParams("age");
+            Boolean deleted = false;
+            EndangeredAnimal additionalEndangeredAnimal = new EndangeredAnimal(endangered_animal_id, endangeredAnimalName, health, age, deleted);
+            EndangeredAnimalDao.addEndangeredAnimal(additionalEndangeredAnimal);
+            response.redirect("/animal-list");
+            return null;
+        });
+        // THE ROUTE TO HANDLE GETTING ALL ENDANGERED ANIMALS FROM DATABASE ON THE ANIMALS LIST
+        get("/animal-list", (req, res) -> {
+            Map<String, List<EndangeredAnimal>> endangeredAnimalList = new HashMap<>();
+            endangeredAnimalList.put("endangeredAnimals", EndangeredAnimalDao.getAllEndangeredAnimals());
+            return new ModelAndView(endangeredAnimalList, "animalsList.hbs");
+        }, engine);
+
         //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
-        get("/sightings", (request, response) -> {
+        get("/sightings-list", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
         }, engine);
 
