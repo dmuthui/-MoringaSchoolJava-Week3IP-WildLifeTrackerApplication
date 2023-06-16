@@ -4,6 +4,12 @@ header,
 .view {
   height: 95vh;
 }
+.content{
+ text-align: center;
+ margin-top: 5px;
+ margin-bottom: 30px;
+ height: 400%;
+}
 
 @media (max-width: 740px) {
   html,
@@ -105,4 +111,27 @@ hr {
 
 h1, h2, p, li, a {
     text-transform: lowerrcase;
+}
+//REGULAR ANIMAL TABLE STYLES
+.table-text.light-grey {
+  background-color: lightgrey;
+}
+
+.thead-green {
+  background-color: green;
+  color: white;
+}
+//DELETE BUTTON ON THE ANIMAL TABLE
+.btn.aqua {
+  background-color: skyblue;
+  border: 2px solid white;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn.aqua:hover {
+  background-color: white;
+  color: skyblue;
 }
