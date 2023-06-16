@@ -99,4 +99,8 @@ hr {
   color: black;
   border-color: white;
 }
+//About App Page
 
+h1, h2, p, li, a {
+    text-transform: lowerrcase;
+}

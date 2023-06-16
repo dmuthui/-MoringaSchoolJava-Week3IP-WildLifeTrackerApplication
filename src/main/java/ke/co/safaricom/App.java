@@ -37,5 +37,10 @@ public class App {
             return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
         }, engine);
 
+        //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
+        get("/about-app-page", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
+        }, engine);
+
     }
 }

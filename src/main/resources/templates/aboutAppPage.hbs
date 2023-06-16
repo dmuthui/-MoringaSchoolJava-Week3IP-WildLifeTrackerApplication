@@ -1,0 +1,111 @@
+{{#partial "title"}}
+    About the App Page
+{{/partial}}
+
+{{#partial "content"}}
+    <div class="content" style="background-color:ivory; background-size: cover; background-position: cover;">
+        <nav class="navbar navbar-expand-lg navbar-dark green scrolling navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/add-animal"><span style="color: green;"><strong>Animals</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/sightings"><span style="color: green;"><strong>Sightings</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
+                                <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container" style="max-width: 850px;">
+            <div class="jumbotron text-left" style="background-color: green;">
+                <h2><strong>WELCOME TO THE ABOUT WILDLIFE TRACKER APP PAGE<i class="fas fa-users animate rotateIn infinite"></i></strong></h2>
+            </div>
+            <div style="text-align: left;">
+                <h1>About the Wildlife Tracker App</h1>
+                <p><strong>JDK Version:</strong> 11.0.17 LTS</p>
+                <p><strong>Author:</strong> David Muthui Ndungu</p>
+
+                <h2>Description</h2>
+                <p>This project is my week three Java IP about the Wildlife Tracker App.</p>
+
+                <h2>What is Wildlife Tracker App?</h2>
+                <p>The Forest Service is considering a proposal from a timber company to clearcut a nearby forest of Douglas Fir. Before this proposal may be approved, they must complete an environmental impact study. In this regard, the app has been developed. The Wildlife Tracker App is a web application built to help Rangers track wildlife sightings in a specific area. The application allows Rangers to record sightings of animals and endangered animals, along with relevant information such as location and Ranger details. It also provides features like reporting exceptions and storing timestamps for each sighting.</p>
+
+                <h2>BDD</h2>
+                <ul>
+                    <li>Categories of Wildlife</li>
+                    <ul>
+                        <li>Animals: ID, Name</li>
+                        <li>Endangered Animals: ID, Name, Health (Options: "healthy", "ill", "okay"), Age (Options: "newborn", "young", "adult")</li>
+                    </ul>
+                    <li>Sightings</li>
+                    <ul>
+                        <li>When a wildlife species is spotted, a Ranger can submit a Sighting form containing the following details:</li>
+                        <li>ID of Animal or Endangered Animal species</li>
+                        <li>Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)</li>
+                        <li>Ranger Name</li>
+                    </ul>
+                </ul>
+
+                <h2>Steps for the Problem</h2>
+                <ul>
+                    <li>The application tracks two categories of wildlife:</li>
+                    <ul>
+                        <li>Animals: ID, Name</li>
+                        <li>Endangered Animals: ID, Name, Health (Options: "healthy", "ill", "okay"), Age (Options: "newborn", "young", "adult")</li>
+                    </ul>
+                    <li>Sightings</li>
+                    <ul>
+                        <li>When a wildlife species is spotted, a Ranger can submit a Sighting form containing the following details:</li>
+                        <li>ID of Animal or Endangered Animal species</li>
+                        <li>Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)</li>
+                        <li>Ranger Name: Ranger's details should include contact information, a badge number, etc</li>
+                    </ul>
+                </ul>
+
+                <h2>Setup/Installation Requirements</h2>
+                <p>Run the code and enter the details that include, but are not limited to:</p>
+                <ul>
+                    <li>Enter Regular animals name</li>
+                    <li>Enter Endangered Animals:
+                        <ul>
+                            <li>Name</li>
+                            <li>Health (Options: "healthy", "ill", "okay")</li>
+                            <li>Age (Options: "newborn", "young", "adult")</li>
+                        </ul>
+                    </li>
+                    <li>Report/Record Sightings
+                        <ul>
+                            <li>When a wildlife species is spotted, a Ranger can submit a Sighting form containing the following details:</li>
+                            <li>Regular animal or Endangered Animal species</li>
+                            <li>Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)</li>
+                            <li>Ranger Name: Ranger's details should include contact information, a badge number, etc</li>
+                        </ul>
+                    </li>
+                    <li>Get your output</li>
+                </ul>
+                <h2>Support and Contact Details</h2>
+                <p>If you need any assistance on any issues or have questions, ideas, or concerns, kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Wildlife Tracker App project.</p>
+                <h2>GitHub URL Link</h2>
+                <p>To be able to view the project, click on <a href="https://github.com/dmuthui/-MoringaSchoolJava-Week3IP-WildLifeTrackerApplication.git">https://github.com/dmuthui/-MoringaSchoolJava-Week3IP-WildLifeTrackerApplication.git</a></p>
+            </div>
+        </div>
+    </div>
+{{/partial}}
+{{>layout.hbs}}
