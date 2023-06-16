@@ -57,15 +57,16 @@ public class App {
             return null;
         }, engine);
 
+        //THE ROUTE TO SERVE ADD ENDANGERED ANIMAL AFTER CLICKING ADD ADD ENDANGERED ANIMAL BUTTON
+        get("/add-endangered", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
+        }, engine);
+
         //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
         get("/sightings", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
         }, engine);
 
-        //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
-        get("/add-endangered", (request, response) -> {
-            return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
-        }, engine);
 
         //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {

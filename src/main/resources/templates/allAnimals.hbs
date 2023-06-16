@@ -1,74 +1,111 @@
 {{#partial "title"}}
-All Animals Page
+    All Animals Page
 {{/partial}}
 
 {{#partial "content"}}
-<div class="content" style="background-color: ivory; background-size: cover; background-position: cover;">
-    <nav class="navbar navbar-expand-lg scrolling navbar">
-        <div class="container">
-            <a class="navbar-brand" href="/">
-                <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Animals</strong></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/sightings-list"><span style="color: green;"><strong>Sightings</strong></span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
-                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
-                        </a>
-                    </li>
-                    <li>
-                    <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>Add Regular Animal</strong></a>
-                    </li>
-                </ul>
+    <div class="content" style="background-color: ivory; background-size: cover; background-position: cover;">
+        <nav class="navbar navbar-expand-lg scrolling navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Animals</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/sightings-list"><span style="color: green;"><strong>Sightings</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
+                                <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                            </a>
+                        </li>
+                        <li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>Add Regular Animal</strong></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="table-container">
+            <div class="table-column">
+                {{#if regularAnimals}}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-text light-grey">
+                            <thead class="thead-green">
+                            <tr>
+                                <th><strong>REGULAR ANIMAL NAME</strong></th>
+                                <th><strong>REGULAR ANIMAL HEALTH</strong></th>
+                                <th><strong>REGULAR ANIMAL AGE</strong></th>
+                                <th><strong>DELETE FUNCTION</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each regularAnimals}}
+                                <tr>
+                                    <td><strong>{{animalName}}</strong></td>
+                                    <td><strong>{{health}}</strong></td>
+                                    <td><strong>{{age}}</strong></td>
+                                    <td>
+                                        <a class="btn aqua" title="delete {{animalName}}" type="button" href="/delete-regularAnimal/{{animalName}}" onclick="confirmDeletion('{{animalName}}')">
+                                            <strong>Delete</strong>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{else}}
+                    <div class="no-data">
+                        <strong>You currently have no regular animals. Consider adding an animal using the ADD Regular Animal button above!</strong>
+                    </div>
+                {{/if}}
+            </div>
+            <div class="table-column">
+                {{#if endageredAnimals}}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-text light-grey">
+                            <thead class="thead-green">
+                            <tr>
+                                <th><strong>ENDANGERED ANIMAL NAME</strong></th>
+                                <th><strong>ENDANGERED ANIMAL HEALTH</strong></th>
+                                <th><strong>ENDANGERED ANIMAL AGE</strong></th>
+                                <th><strong>DELETE FUNCTION</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each endageredAnimals}}
+                                <tr>
+                                    <td><strong>{{endangeredAnimalName}}</strong></td>
+                                    <td><strong>{{health}}</strong></td>
+                                    <td><strong>{{age}}</strong></td>
+                                    <td>
+                                        <a class="btn aqua" title="delete {{endangeredAnimalName}}" type="button" href="/delete-endangeredAnimalName/{{endangeredAnimalName}}" onclick="confirmDeletion('{{endangeredAnimalName}}')">
+                                            <strong>Delete</strong>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{else}}
+                    <div class="no-data">
+                        <strong>You currently have no endangered animals. Consider adding an animal using the ADD Endangered Animal button above!</strong>
+                    </div>
+                {{/if}}
             </div>
         </div>
-    </nav>
-    {{#if regularAnimals}}
-        <div class="table-responsive">
-            <table class="table table-bordered table-text light-grey">
-                <thead class="thead-green">
-                <tr>
-                    <th><strong>REGULAR ANIMAL NAME</strong></th>
-                    <th><strong>REGULAR ANIMAL HEALTH</strong></th>
-                    <th><strong>REGULAR ANIMAL AGE</strong></th>
-                    <th><strong>DELETE FUNCTION</strong></th>
-                </tr>
-                </thead>
-                <tbody>
-                {{#each regularAnimals}}
-                    <tr>
-                        <td><strong>{{animalName}}</strong></td>
-                        <td><strong>{{health}}</strong></td>
-                        <td><strong>{{age}}</strong></td>
-                        <td>
-                            <a class="btn aqua" title="delete {{animalName}}" type="button" href="/delete-regularAnimal/{{animalName}}" onclick="confirmDeletion('{{animalName}}')">
-                                <strong>Delete</strong>
-                            </a>
-                        </td>
-                    </tr>
-                {{/each}}
-                </tbody>
-            </table>
-        </div>
-
-    {{else}}
-        <div class="no-data">
-            <strong>You currently have no animals. Consider adding an Animal using the ADD Regular Animal button above!</strong>
-        </div>
-    {{/if}}
-</div>
+    </div>
 {{/partial}}
 {{>layout.hbs}}
