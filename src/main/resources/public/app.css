@@ -2,7 +2,7 @@ html,
 body,
 header,
 .view {
-  height: 105vh;
+  height: 95vh;
 }
 
 @media (max-width: 740px) {
@@ -49,9 +49,11 @@ header,
                                }
                           } }
 h1 {
-  letter-spacing: 8px;
+  letter-spacing: 3px;
 }
-
+h2 {
+  letter-spacing: 3x;
+}
 h5 {
   letter-spacing: 3px;
 }
