@@ -35,11 +35,4 @@ $(document).ready(function() {
 
  }
 
- //VALIDATES ENDANGERED ANIMAL FORM DATA ENTRY:SENDS ALERT WHEN YOU CLICK BLANK FORM FOR SUBMISSION
-  function validatedForm() {
-        var endangeredAnimalName = document.getElementById("endangeredAnimalName").value;
-        if (endangeredAnimalName === "") {
-            alert("Please enter the endangered animal name.");
-            return false; // Prevent form submission
-        }
-    }
+
