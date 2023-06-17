@@ -92,6 +92,10 @@ document.addEventListener('DOMContentLoaded', function() {
     var animalNameDropdown = document.getElementById('animalName');
 
     regularAnimalRadio.addEventListener('change', function() {
+      if (regularAnimalRadio.checked) {
+          // Uncheck the endangered animal radio button
+          endangeredAnimalRadio.checked = false;
+        }
         // Make an AJAX request to fetch the list of regular animals
         fetch('/regular-animals')
             .then(response => response.json())
@@ -108,8 +112,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     endangeredAnimalRadio.addEventListener('change', function() {
-        if (regularAnimalRadio.checked) {
-            regularAnimalRadio.checked = false; // Uncheck the regular animal radio button
+        if (endangeredAnimalRadio.checked) {
+        // Uncheck the regular animal radio button
+        regularAnimalRadio.checked = false;
         }
 
         // Make an AJAX request to fetch the list of endangered animals

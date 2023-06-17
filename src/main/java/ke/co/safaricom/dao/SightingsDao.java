@@ -6,6 +6,7 @@ import ke.co.safaricom.model.RegularAnimal;
 import ke.co.safaricom.model.Sightings;
 import org.sql2o.Connection;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 public class SightingsDao {
@@ -31,6 +32,7 @@ public class SightingsDao {
             try (Connection db = Database.getConnect().open()) {
                 String Sightings = "SELECT * FROM sightings WHERE not deleted;";
                 allSightings = db.createQuery(Sightings).executeAndFetch(Sightings.class);
+                System.out.println();
             } catch (Exception error) {
                 System.out.println(error.getMessage());
                 return allSightings;

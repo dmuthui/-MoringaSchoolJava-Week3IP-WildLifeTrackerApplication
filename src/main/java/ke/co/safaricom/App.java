@@ -116,7 +116,7 @@ public class App {
             String rangersName = request.queryParams("rangersName");
             Boolean deleted = false;
             Sightings additionalSighting = new Sightings(sighting_id, regularAnimal, endangeredAnimal, animalName, location, rangersName, deleted);
-            SightingsDao.addSighting(additionalSighting );
+            SightingsDao.addSighting(additionalSighting);
             response.redirect("/sighting-list");
             return null;
         });
