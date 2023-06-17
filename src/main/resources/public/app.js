@@ -34,3 +34,53 @@ $(document).ready(function() {
      }
 
  }
+//SCRIPT FUNCTIONS TO LINK ANIMALS ON THE RADIO BUTTONS TO THE REGULAR/ENDANGERED ANIMAL LIST
+
+//Endangered Animal radio button function to populate animal name from the endangered animal List
+document.addEventListener('DOMContentLoaded', function() {
+    var regularAnimalRadio = document.getElementById('regularAnimal');
+    var endangeredAnimalRadio = document.getElementById('endangeredAnimal');
+    var animalNameDropdown = document.getElementById('animalName');
+
+    regularAnimalRadio.addEventListener('change', function() {
+      if (regularAnimalRadio.checked) {
+          // Uncheck the endangered animal radio button
+          endangeredAnimalRadio.checked = false;
+        }
+        // Make an AJAX request to fetch the list of regular animals
+        fetch('/regular-animals')
+            .then(response => response.json())
+            .then(data => {
+                // Update the animal name dropdown with the fetched data
+                animalNameDropdown.innerHTML = '';
+                data.forEach(animal => {
+                    var option = document.createElement('option');
+                    option.textContent = animal.animalName;
+                    animalNameDropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.log(error));
+    });
+//Endangered Animal radio button function to populate animal name from the endangered animal List
+    endangeredAnimalRadio.addEventListener('change', function() {
+        if (endangeredAnimalRadio.checked) {
+        // Uncheck the regular animal radio button
+        regularAnimalRadio.checked = false;
+        }
+
+        // Make an AJAX request to fetch the list of endangered animals
+        fetch('/endangered-animals')
+            .then(response => response.json())
+            .then(data => {
+                // Update the animal name dropdown with the fetched data
+                animalNameDropdown.innerHTML = '';
+                data.forEach(animal => {
+                    var option = document.createElement('option');
+                    option.value = animal.endangered_animal_id;
+                    option.textContent = animal.endangeredAnimalName;
+                    animalNameDropdown.appendChild(option);
+                });
+            })
+            .catch(error => console.log(error));
+    });
+});
