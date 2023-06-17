@@ -2,11 +2,14 @@ package ke.co.safaricom;
 
 import ke.co.safaricom.dao.EndangeredAnimalDao;
 import ke.co.safaricom.dao.RegularAnimalDao;
+import ke.co.safaricom.dao.SightingsDao;
 import ke.co.safaricom.model.EndangeredAnimal;
 import ke.co.safaricom.model.RegularAnimal;
+import ke.co.safaricom.model.Sightings;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +69,7 @@ public class App {
 
         //ROUTE TO SERVE POSTING OF ADD ENDANGERED ANIMAL TO THE DATABASE
         post("/add-endangered-animal", (request, response) -> {
-            // Initializing the regular animal
+            // Initializing the endangered animal
             Integer endangered_animal_id = null;
             String endangeredAnimalName = request.queryParams("endangeredAnimalName");
             String health = request.queryParams("health");
@@ -92,10 +95,33 @@ public class App {
             return null;
         }, engine);
 
-        //THE ROUTE TO SERVE SIGHTINGS AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
-        get("/sightings-list", (request, response) -> {
+        //THE ROUTE TO SERVE ADD SIGHTING AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
+        get("/add-sighting", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
         }, engine);
+
+        //ROUTE TO SERVE POSTING OF REPORT/RECORD A SIGHTING TO THE DATABASE
+        post("/sightings-list", (request, response) -> {
+            // Initializing the sighting
+            Integer sighting_id = null;
+            String animalCategory = request.queryParams("animalCategory");
+            String animalName= request.queryParams("animalName");
+            String location = request.queryParams("location");
+            String rangersName = request.queryParams("rangersName");
+            LocalDateTime dateTime = LocalDateTime.now();
+            Boolean deleted = false;
+            Sightings additionalSighting = new Sightings(sighting_id, animalCategory, animalName, location, rangersName, dateTime,  deleted);
+            SightingsDao.addSighting(additionalSighting);
+            response.redirect("/sighting-list");
+            return null;
+        });
+        // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
+        get("/sighting-list", (req, res) -> {
+            Map<String, List<EndangeredAnimal>> endangeredAnimalList = new HashMap<>();
+            endangeredAnimalList.put("endangeredAnimals", EndangeredAnimalDao.getAllEndangeredAnimals());
+            return new ModelAndView(endangeredAnimalList, "sightingList.hbs");
+        }, engine);
+
 
         //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {
