@@ -122,17 +122,34 @@ h1, h2, p, li, a {
   color: white;
 }
 //DELETE BUTTON ON THE ANIMAL TABLE
-.btn.aqua {
-  background-color: skyblue;
-  border: 2px solid white;
-  color: white;
-  padding: 5px 10px;
-  text-decoration: none;
-  display: inline-block;
-}
+    .delete-btn {
+        border: 2px solid #000;
+        border-radius: 5px;
+        background-color: transparent;
+        color: red;
+        padding: 5px 10px;
+        transition: background-color 0.3s ease;
+    }
 
-.btn.aqua:hover {
-  background-color: white;
-  color: skyblue;
-}
+    .delete-btn:hover {
+        background-color: red;
+        color: white;
+    }
 
+//TABLE SIZE STYLYING FOR REGULAR/ENDANGERED ANIMALS TABLES
+     .table-container {
+         margin-top: 20px;
+     }
+
+     .table-column {
+         display: inline-block;
+         vertical-align: top;
+         width: 70%; /* Adjust the width as needed */
+     }
+
+     @media (max-width: 767px) {
+         .table-column {
+             display: block;
+             width: 100%; /* Adjust the width as needed */
+         }
+     }

@@ -62,8 +62,8 @@
                                     <td><strong>{{health}}</strong></td>
                                     <td><strong>{{age}}</strong></td>
                                     <td>
-                                        <a class="btn aqua" title="delete {{animalName}}" type="button" href="/delete-regularAnimal/{{animalName}}" onclick="confirmDeletion('{{animalName}}')">
-                                            <strong>Delete</strong>
+                                        <a class="btn aqua delete-btn" title="delete {{animalName}}" type="button" href="/delete-regularAnimal/{{animalName}}" onclick="confirmDeletion('{{animalName}}')">
+                                            <strong>DELETE</strong>
                                         </a>
                                     </td>
                                 </tr>
@@ -96,8 +96,8 @@
                                     <td><strong>{{health}}</strong></td>
                                     <td><strong>{{age}}</strong></td>
                                     <td>
-                                        <a class="btn aqua" title="delete {{endangeredAnimalName}}" type="button" href="/delete-endangeredAnimalName/{{endangeredAnimalName}}" onclick="confirmDeletion('{{endangeredAnimalName}}')">
-                                            <strong>Delete</strong>
+                                        <a class="btn aqua delete-btn" title="delete {{endangeredAnimalName}}" type="button" href="/delete-endangeredAnimalName/{{endangeredAnimalName}}" onclick="confirmDeletion('{{endangeredAnimalName}}')">
+                                            <strong>DELETE</strong>
                                         </a>
                                     </td>
                                 </tr>
@@ -115,3 +115,4 @@
     </div>
 {{/partial}}
 {{>layout.hbs}}
+
