@@ -1,11 +1,13 @@
 package ke.co.safaricom;
 
+import com.google.gson.GsonBuilder;
 import ke.co.safaricom.dao.EndangeredAnimalDao;
 import ke.co.safaricom.dao.RegularAnimalDao;
 import ke.co.safaricom.dao.SightingsDao;
 import ke.co.safaricom.model.EndangeredAnimal;
 import ke.co.safaricom.model.RegularAnimal;
 import ke.co.safaricom.model.Sightings;
+import org.apache.hadoop.shaded.com.google.gson.Gson;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
@@ -115,15 +117,28 @@ public class App {
             response.redirect("/sighting-list");
             return null;
         });
-        // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
+    // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
         get("/sighting-list", (req, res) -> {
             Map<String, List<EndangeredAnimal>> endangeredAnimalList = new HashMap<>();
             endangeredAnimalList.put("endangeredAnimals", EndangeredAnimalDao.getAllEndangeredAnimals());
             return new ModelAndView(endangeredAnimalList, "sightingList.hbs");
         }, engine);
 
+        //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
+        Gson gson = new Gson();
+// Endpoint for fetching endangered animals
+      get("/regular-animals", (req, res) -> {
+            List<RegularAnimal> regularAnimals = RegularAnimalDao.getAllRegularAnimals();
+            return gson.toJson(regularAnimals);
+        });
 
-        //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
+// Endpoint for fetching endangered animals
+        get("/endangered-animals", (req, res) -> {
+            List<EndangeredAnimal> endangeredAnimals = EndangeredAnimalDao.getAllEndangeredAnimals();
+            return gson.toJson(endangeredAnimals);
+        });
+
+    //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
         }, engine);
