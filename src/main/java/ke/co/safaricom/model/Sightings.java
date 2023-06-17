@@ -1,23 +1,22 @@
 package ke.co.safaricom.model;
 
-import java.time.LocalDateTime;
 
 public class Sightings {
     private int sighting_id;
-    private String animalCategory;
+    private String regularAnimal;
+    private String endangeredAnimal;
     private String animalName;
     private String location;
     private String rangersName;
-    private LocalDateTime timestamp;
     private boolean deleted;
 
-    public Sightings(int sighting_id, String animalCategory, String animalName, String location, String rangersName, LocalDateTime timestamp, boolean deleted) {
+    public Sightings(int sighting_id, String regularAnimal, String endangeredAnimal, String animalName, String location, String rangersName, boolean deleted) {
         this.sighting_id = sighting_id;
-        this.animalCategory = animalCategory;
+        this.regularAnimal = regularAnimal;
+        this.endangeredAnimal = endangeredAnimal;
         this.animalName = animalName;
         this.location = location;
         this.rangersName = rangersName;
-        this.timestamp = timestamp;
         this.deleted = deleted;
     }
 
@@ -29,12 +28,20 @@ public class Sightings {
         this.sighting_id = sighting_id;
     }
 
-    public String getAnimalCategory() {
-        return animalCategory;
+    public String getRegularAnimal() {
+        return regularAnimal;
     }
 
-    public void setAnimalCategory(String animalCategory) {
-        this.animalCategory = animalCategory;
+    public void setRegularAnimal(String regularAnimal) {
+        this.regularAnimal = regularAnimal;
+    }
+
+    public String getEndangeredAnimal() {
+        return endangeredAnimal;
+    }
+
+    public void setEndangeredAnimal(String endangeredAnimal) {
+        this.endangeredAnimal = endangeredAnimal;
     }
 
     public String getAnimalName() {
@@ -61,14 +68,6 @@ public class Sightings {
         this.rangersName = rangersName;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
-    }
-
     public boolean isDeleted() {
         return deleted;
     }
@@ -81,11 +80,11 @@ public class Sightings {
     public String toString() {
         return "Sightings{" +
                 "sighting_id=" + sighting_id +
-                ", animalCategory='" + animalCategory + '\'' +
+                ", regularAnimal='" + regularAnimal + '\'' +
+                ", endangeredAnimal='" + endangeredAnimal + '\'' +
                 ", animalName='" + animalName + '\'' +
                 ", location='" + location + '\'' +
                 ", rangersName='" + rangersName + '\'' +
-                ", timestamp=" + timestamp +
                 ", deleted=" + deleted +
                 '}';
     }

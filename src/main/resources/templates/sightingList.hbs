@@ -24,7 +24,7 @@
                             <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Endangered Animals List</strong></span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/sightings-list"><span style="color: green;"><strong>Sightings</strong></span></a>
+                            <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>Animal Sighting List</strong></span></a>
                         </li>
                         <li class="nav-item">
                             <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
@@ -37,6 +37,8 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>Add Endangered Animal</strong></a>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>Add Animal Sighting</strong></a>
                         </li>
                     </ul>
                 </div>
@@ -44,12 +46,13 @@
         </nav>
         <div class="table-container">
             <div class="table-column">
-                {{#if sighting}}
+                {{#if sightings}}
                     <div class="table-responsive">
                         <table class="table table-bordered table-text light-grey">
                             <thead class="thead-green">
                             <tr>
-                                <th><strong>ANIMAL CATEGORY:</strong></th>
+                                <th><strong>REGULAR ANIMAL:</strong></th>
+                                <th><strong>ENDANGEDANIMAL ANIMAL:</strong></th>
                                 <th><strong>ANIMAL NAME:</strong></th>
                                 <th><strong>ANIMAL LOCATION:</strong></th>
                                 <th><strong>RANGERS NAME:</strong></th>
@@ -57,9 +60,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            {{#each sighting}}
+                            {{#each sightings}}
                                 <tr>
-                                    <td><strong>{{animalCategory}}</strong></td>
+                                    <td><strong>{{regularAnimal}}</strong></td>
+                                    <td><strong>{{endangeredAnimal}}</strong></td>
                                     <td><strong>{{animalName}}</strong></td>
                                     <td><strong>{{location}}</strong></td>
                                     <td><strong>{{rangersName}}</strong></td>
@@ -75,7 +79,7 @@
                     </div>
                 {{else}}
                     <div class="no-data">
-                     <strong>There is no sighting that has currently been reported or recorded</strong>
+                     <strong>There is no sighting that has currently been reported or recorded.Please Add Animal Sighting using the link above.</strong>
                     </div>
                 {{/if}}
             </div>
