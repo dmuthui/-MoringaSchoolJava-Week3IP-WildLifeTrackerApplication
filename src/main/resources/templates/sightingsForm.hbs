@@ -47,11 +47,20 @@
                             <div class="col-sm-4 col-sm-offset-4">
                                 <form action="/sightings-list" method="post">
                                     <div class="form-group">
+                                        <label for="animalType" style="color: green;"><strong>ANIMAL CATEGORY:</strong></label><br>
+                                        <label>
+                                            <input type="radio" name="animalType" id="regularAnimal" value="regular" checked>
+                                            Regular Animal
+                                        </label>
+                                        <label>
+                                            <input type="radio" name="animalType" id="endangeredAnimal" value="endangered">
+                                            Endangered Animal
+                                        </label>
+                                    </div>
+
+                                    <div class="form-group">
                                         <label for="animalName" class="in-line" style="color: green;"><strong>ANIMAL NAME:</strong></label>
                                         <select id="animalName" name="animalName" type="text" class="form-control">
-                                            {{#each animals}}
-                                                <option value="{{animal_id}}">{{animalName}}</option>
-                                            {{/each}}
                                         </select>
                                     </div>
                                     <div class="form-group">
