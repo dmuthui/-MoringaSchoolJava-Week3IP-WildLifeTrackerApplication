@@ -254,5 +254,12 @@ public class App {
             return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
         }, engine);
 
+    //THE ROUTE TO SERVE SERACH PAGE AFTER CLICKING ON SEARCH PAGE ON HOME PAGE
+        get("/search-page", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "searchPage.hbs");
+        }, engine);
+
+    //THE SEARCH PAGE PARAMETERS
+
     }
 }
