@@ -10,35 +10,46 @@ import java.sql.SQLOutput;
 import java.util.List;
 
 public class SightingsDao {
-    //ADDS A SIGHTING INTO THE DATABASE
-    public static void addSighting(Sightings additionalSighting) {
-        try (Connection db = Database.getConnect().open()) {
+       //ADDS A SIGHTING INTO THE DATABASE
+     public static void addSighting(Sightings additionalSighting) {
+         try (Connection db = Database.getConnect().open()) {
             // Database action
-            String sightingAdd = "INSERT INTO sightings (regularAnimal, endangeredAnimal, animalName, location, rangersName, deleted) VALUES (UPPER(:regularAnimal), UPPER(:endangeredAnimal), UPPER(:animalName), UPPER(:location), UPPER(:rangersName), false)";
+            String sightingAdd = "INSERT INTO sightings (animal_category, animal_name, location, rangers_name, deleted) VALUES (UPPER(:animal_category), :animal_name, :location, UPPER(:rangers_name), false)";
             db.createQuery(sightingAdd)
-                    .addParameter("regularAnimal", additionalSighting.getRegularAnimal())
-                    .addParameter("endangeredAnimal", additionalSighting.getEndangeredAnimal())
-                    .addParameter("animalName", additionalSighting.getAnimalName())
+                    .addParameter("animal_category", additionalSighting.getAnimal_category())
+                    .addParameter("animal_name", additionalSighting.getAnimal_name())
                     .addParameter("location", additionalSighting.getLocation())
-                    .addParameter("rangersName", additionalSighting.getRangersName())
+                    .addParameter("rangers_name", additionalSighting.getRangers_name())
                     .executeUpdate();
+         } catch (Exception ex) {
+            System.out.println("Error adding sighting: " + ex.getMessage());
+         }
+      }
+ //RETRIEVES A LIST OF ALL THE SIGHTINGS FROM THE DATABASE
+    public static List<Sightings> getAllSightings() {
+        List<Sightings> allSightings = null;
+        try (Connection db = Database.getConnect().open()) {
+            String sightings = "SELECT * FROM sightings WHERE not deleted;";
+            allSightings = db.createQuery(sightings)
+                    .executeAndFetch(Sightings.class);
         } catch (Exception error) {
+            System.out.println(allSightings);
             System.out.println(error.getMessage());
-        }
-    }
-        //RETRIEVES A LIST OF ALL THE SIGHTINGS FROM THE DATABASE
-        public static List<Sightings> getAllSightings() {
-            List<Sightings> allSightings = null;
-            try (Connection db = Database.getConnect().open()) {
-                String Sightings = "SELECT * FROM sightings WHERE not deleted;";
-                allSightings = db.createQuery(Sightings).executeAndFetch(Sightings.class);
-                System.out.println();
-            } catch (Exception error) {
-                System.out.println(error.getMessage());
-                return allSightings;
-            }
             return allSightings;
         }
+        return allSightings;
     }
+      //DELETES A SIGHTING FROM THE DATABASE
+      public static void deleteSighting(String animal_name ){
+        try(Connection db = Database.getConnect().open()){
+            String deletedSighting = "UPDATE sightings SET deleted = (true) WHERE animal_name = (:animal_name);";
+            db.createQuery(deletedSighting).addParameter("animal_name", animal_name).executeUpdate();
+            } catch (Exception error) {
+                    System.out.println(error.getMessage());
+            }
+        }
+    }
+
+
 
 

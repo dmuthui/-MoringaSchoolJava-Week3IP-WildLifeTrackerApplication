@@ -2,54 +2,44 @@ package ke.co.safaricom.model;
 
 
 public class Sightings {
-    private int sighting_id;
-    private String regularAnimal;
-    private String endangeredAnimal;
-    private String animalName;
+    private Integer sighting_id;
+    private String animal_category;
+    private String animal_name;
     private String location;
-    private String rangersName;
-    private boolean deleted;
+    private String rangers_name;
+    private Boolean deleted = false;
 
-    public Sightings(int sighting_id, String regularAnimal, String endangeredAnimal, String animalName, String location, String rangersName, boolean deleted) {
+    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, Boolean deleted) {
         this.sighting_id = sighting_id;
-        this.regularAnimal = regularAnimal;
-        this.endangeredAnimal = endangeredAnimal;
-        this.animalName = animalName;
+        this.animal_category = animal_category;
+        this.animal_name = animal_name;
         this.location = location;
-        this.rangersName = rangersName;
+        this.rangers_name = rangers_name;
         this.deleted = deleted;
     }
 
-    public int getSighting_id() {
+    public Integer getSighting_id() {
         return sighting_id;
     }
 
-    public void setSighting_id(int sighting_id) {
+    public void setSighting_id(Integer sighting_id) {
         this.sighting_id = sighting_id;
     }
 
-    public String getRegularAnimal() {
-        return regularAnimal;
+    public String getAnimal_category() {
+        return animal_category;
     }
 
-    public void setRegularAnimal(String regularAnimal) {
-        this.regularAnimal = regularAnimal;
+    public void setAnimal_category(String animal_category) {
+        this.animal_category = animal_category;
     }
 
-    public String getEndangeredAnimal() {
-        return endangeredAnimal;
+    public String getAnimal_name() {
+        return animal_name;
     }
 
-    public void setEndangeredAnimal(String endangeredAnimal) {
-        this.endangeredAnimal = endangeredAnimal;
-    }
-
-    public String getAnimalName() {
-        return animalName;
-    }
-
-    public void setAnimalName(String animalName) {
-        this.animalName = animalName;
+    public void setAnimal_name(String animal_name) {
+        this.animal_name = animal_name;
     }
 
     public String getLocation() {
@@ -60,19 +50,19 @@ public class Sightings {
         this.location = location;
     }
 
-    public String getRangersName() {
-        return rangersName;
+    public String getRangers_name() {
+        return rangers_name;
     }
 
-    public void setRangersName(String rangersName) {
-        this.rangersName = rangersName;
+    public void setRangers_name(String rangers_name) {
+        this.rangers_name = rangers_name;
     }
 
-    public boolean isDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 
@@ -80,11 +70,10 @@ public class Sightings {
     public String toString() {
         return "Sightings{" +
                 "sighting_id=" + sighting_id +
-                ", regularAnimal='" + regularAnimal + '\'' +
-                ", endangeredAnimal='" + endangeredAnimal + '\'' +
-                ", animalName='" + animalName + '\'' +
+                ", animal_category='" + animal_category + '\'' +
+                ", animal_name='" + animal_name + '\'' +
                 ", location='" + location + '\'' +
-                ", rangersName='" + rangersName + '\'' +
+                ", rangers_name='" + rangers_name + '\'' +
                 ", deleted=" + deleted +
                 '}';
     }

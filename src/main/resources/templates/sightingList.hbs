@@ -51,8 +51,7 @@
                         <table class="table table-bordered table-text light-grey">
                             <thead class="thead-green">
                             <tr>
-                                <th><strong>REGULAR ANIMAL:</strong></th>
-                                <th><strong>ENDANGEDANIMAL ANIMAL:</strong></th>
+                                <th><strong>ANIMAL CATEGORY:</strong></th>
                                 <th><strong>ANIMAL NAME:</strong></th>
                                 <th><strong>ANIMAL LOCATION:</strong></th>
                                 <th><strong>RANGERS NAME:</strong></th>
@@ -62,13 +61,12 @@
                             <tbody>
                             {{#each sightings}}
                                 <tr>
-                                    <td><strong>{{regularAnimal}}</strong></td>
-                                    <td><strong>{{endangeredAnimal}}</strong></td>
-                                    <td><strong>{{animalName}}</strong></td>
+                                    <td><strong>{{animal_category}}</strong></td>
+                                    <td><strong>{{animal_name}}</strong></td>
                                     <td><strong>{{location}}</strong></td>
-                                    <td><strong>{{rangersName}}</strong></td>
+                                    <td><strong>{{rangers_name}}</strong></td>
                                     <td>
-                                        <a class="btn aqua delete-btn" title="delete {{animalName}}" type="button" href="/delete-regularAnimal/{{animalName}}" onclick="confirmDeletion('{{animalName}}')">
+                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}" type="button" href="/delete-animal_name/:animal_name{{animal_name}}" onclick="confirmDelete('{{animal_name}}')">
                                             <strong>DELETE</strong>
                                         </a>
                                     </td>
@@ -79,11 +77,12 @@
                     </div>
                 {{else}}
                     <div class="no-data">
-                     <strong>There is no sighting that has currently been reported or recorded.Please Add Animal Sighting using the link above.</strong>
+                        <strong>There is no sighting that has currently been reported or recorded.Please Add Animal Sighting using the link above.</strong>
                     </div>
                 {{/if}}
             </div>
         </div>
     </div>
+
 {{/partial}}
 {{>layout.hbs}}

@@ -49,17 +49,17 @@
                                     <div class="form-group">
                                         <label for="animalType" style="color: green;"><strong>ANIMAL CATEGORY:</strong></label><br>
                                         <label>
-                                            <input type="radio" name="regularAnimal" id="regularAnimal" value="regular">
+                                            <input type="radio" name="animal_category" id="regularAnimal" value="regular">
                                             Regular Animal
                                         </label>
                                         <label>
-                                            <input type="radio" name="endangeredAnimal" id="endangeredAnimal" value="endangered">
+                                            <input type="radio" name="animal_category" id="endangeredAnimal" value="endangered">
                                             Endangered Animal
                                         </label>
                                     </div>
                                     <div class="form-group">
-                                        <label for="animalName" class="in-line" style="color: green;"><strong>ANIMAL NAME:</strong></label>
-                                        <select id="animalName" name="animalName" type="text" class="form-control" required></select>
+                                        <label for="animal_name" class="in-line" style="color: green;"><strong>ANIMAL NAME:</strong></label>
+                                        <select id="animal_name" name="animal_name" type="text" class="form-control" required></select>
                                     </div>
                                     <div class="form-group">
                                         <label for="location" class="in-line" style="color: green;"><strong>ANIMAL LOCATION:</strong></label>
@@ -71,8 +71,8 @@
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="rangersName" class="in-line" style="color: green;"><strong>RANGER NAME:</strong></label>
-                                        <input type="text" name="rangersName" class="form-control transparentInputFields" required>
+                                        <label for="rangers_name" class="in-line" style="color: green;"><strong>RANGER NAME:</strong></label>
+                                        <input type="text" name="rangers_name" class="form-control transparentInputFields" required>
                                     </div>
                                     <button class="btn btn-info black-text-white-border" type="submit" name="add-sighting" style="background-color: yellow;"><strong>Add Sighting</strong></button>
                                 </form>
@@ -83,7 +83,6 @@
             </div>
         </div>
     </div>
-
 {{/partial}}
 
 {{>layout.hbs}}

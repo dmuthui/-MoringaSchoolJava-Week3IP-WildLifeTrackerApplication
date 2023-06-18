@@ -11,10 +11,9 @@ import org.apache.hadoop.shaded.com.google.gson.Gson;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-import java.sql.Timestamp;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,24 +105,30 @@ public class App {
         }, engine);
 
 //ROUTE TO SERVE POSTING OF REPORT/RECORD A SIGHTING TO THE DATABASE
+        // Define route for sighting form submission
         post("/add-sighting", (request, response) -> {
-            // Initializing the sighting
+            // Get form inputs
             Integer sighting_id = null;
-            String regularAnimal= request.queryParams("regularAnimal");
-            String endangeredAnimal= request.queryParams("endangeredAnimal");
-            String animalName= request.queryParams("animalName");
+            String animal_category = request.queryParams("animal_category");
+            String animal_name = request.queryParams("animal_name");
             String location = request.queryParams("location");
-            String rangersName = request.queryParams("rangersName");
+            String rangers_name = request.queryParams("rangers_name");
             Boolean deleted = false;
-            Sightings additionalSighting = new Sightings(sighting_id, regularAnimal, endangeredAnimal, animalName, location, rangersName, deleted);
+            // Create a new sighting object
+            Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, location, rangers_name, deleted);
+            // Add the sighting to the database
             SightingsDao.addSighting(additionalSighting);
+            // Redirect to the sighting list page
             response.redirect("/sighting-list");
             return null;
         });
 
 // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
+        // Define route for sighting list page
         get("/sighting-list", (req, res) -> {
+            // Get the list of sightings from the database
             Map<String, List<Sightings>> sightingList = new HashMap<>();
+            // Render the sighting list template with the sightings data
             sightingList.put("sightings", SightingsDao.getAllSightings());
             return new ModelAndView(sightingList, "sightingList.hbs");
         }, engine);
@@ -140,6 +145,14 @@ public class App {
             List<EndangeredAnimal> endangeredAnimals = EndangeredAnimalDao.getAllEndangeredAnimals();
             return gson.toJson(endangeredAnimals);
         });
+//DELETING A SITTING FROM THE ANIMALS LIST PAGE
+        get("/delete-animal_name/:animal_name", (req, res) -> {
+            String animal_name = req.params(":animal_name");
+            SightingsDao.deleteSighting(animal_name);
+            res.redirect("/sighting-list");
+            return null;
+        }, engine);
+
 
 //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {
