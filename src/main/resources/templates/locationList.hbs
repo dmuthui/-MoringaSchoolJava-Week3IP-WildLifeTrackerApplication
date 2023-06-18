@@ -1,0 +1,94 @@
+{{#partial "title"}}
+   Location List Page
+{{/partial}}
+
+{{#partial "content"}}
+    <div class="content" style="background-color: ivory; background-size: cover; background-position: cover;">
+        <nav class="navbar navbar-expand-lg scrolling navbar">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: green;"><strong>Regular Animals List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>Endangered Animals List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>Animal Sighting List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
+                                <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                            </a>
+                        </li>
+                        <li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>Add Regular Animal</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>Add Endangered Animal</strong></a>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>Add Animal Sighting</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/add-rangers"><span style="color: black;"><strong>Rangers List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" href="/add-locations"><span style="color: black;"><strong>Location List</strong></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="table-container">
+            <div class="table-column">
+                {{#if locations}}
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-text light-grey">
+                            <thead class="thead-green">
+                            <tr>
+                                <th><strong>ZONE NAME:</strong></th>
+                                <th><strong>ZONE DESCRIPTION:</strong></th>
+                                <th><strong>ZONE QUADRANT</strong></th>
+                                <th><strong>ZONE SIGHTINGS:</strong></th>
+                                <th><strong>DELETE FUNCTION:</strong></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#each locations}}
+                                <tr>
+                                    <td><strong>{{zones_name}}</strong></td>
+                                    <td><strong>{{zones_descriptions}}</strong></td>
+                                    <td><strong>{{zones_quadrant}}</strong></td>
+                                    <td><strong>{{zones_sightings}}</strong></td>
+                                    <td>
+                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}" type="button" href="/delete-animal_name/:animal_name{{animal_name}}" onclick="confirmDelete('{{animal_name}}')">
+                                            <strong>DELETE</strong>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                {{else}}
+                    <div class="no-data">
+                        <strong>There is no Location that has currently added.Please Add location using the link above.</strong>
+                    </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+
+{{/partial}}
+{{>layout.hbs}}

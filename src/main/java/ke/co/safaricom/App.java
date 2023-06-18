@@ -133,6 +133,7 @@ public class App {
             return new ModelAndView(sightingList, "sightingList.hbs");
         }, engine);
 
+
 //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
         Gson gson = new Gson();
 // Endpoint for fetching endangered animals
@@ -153,6 +154,15 @@ public class App {
             return null;
         }, engine);
 
+//THE ROUTE TO SERVE ADD RANGERS AFTER CLICKING ADD RANGER BUTTON
+        get("/add-rangers", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "rangersForm.hbs");
+        }, engine);
+
+//THE ROUTE TO SERVE ADD LOCATION AFTER CLICKING ADD LOCATION BUTTON
+        get("/add-locations", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "locationForm.hbs");
+        }, engine);
 
 //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {

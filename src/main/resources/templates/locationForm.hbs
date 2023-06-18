@@ -1,0 +1,79 @@
+{{#partial "title"}}
+    Add Animal Page
+{{/partial}}
+
+{{#partial "content"}}
+    <nav class="navbar navbar-expand-lg navbar-dark green fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: black;"><strong>Regular Animals List</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: black;"><strong>Endangered Animals List</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: black"><strong>Animal Sighting List</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: black; font-size: small;">
+                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color:black"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="views" style="background-image: url('/images/endangeredAnimals.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="mask rgba-black-light align-items-center">
+            <div class="container">
+                <div class="indexRow">
+                    <div class="col-md-12 mb-4 yellow-text text-center">
+                        <h1 class="h1-reponsive text text-smallcase font-weight-bold mb-0 pt-md-5 pt-5 animated wobble" ><strong>ADD THE LOCATION:</strong></h1>
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <div class="content">
+                                    <form action="/add-zone" method="POST">
+                                        <div class="form-group">
+                                            <label for="zones_name"><strong>Zone Name:</strong></label>
+                                            <input type="text" class="form-control" id="zones_name" name="zones_name" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zones_descriptions"  ><strong>Zone Descriptions:</strong></label>
+                                            <textarea class="form-control" id="zones_descriptions" name="zones_descriptions" rows="3" required></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zones_quadrant"><strong>Zone Quadrant:</strong></label>
+                                            <input type="text" class="form-control" id="zones_quadrant" name="zones_quadrant" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zones_sightings"><strong>Zone Sightings:</strong></label>
+                                            <input type="number" class="form-control" id="zones_sightings" name="zones_sightings" min="0" required>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{{/partial}}
+
+{{>layout.hbs}}
