@@ -8,6 +8,15 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class EndangeredAnimalDao {
+    //THIS CODE CREATES THE ENDANGERED ANIMAL TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS endangered_animal (endangered_animal_id SERIAL PRIMARY KEY, endangeredAnimalName varchar, health varchar, age varchar, deleted boolean default false)";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {System.out.println(error.getMessage());}
+    }
+
     //ADDS AN ENDANGERED ANIMAL INTO THE DATABASE
     public static void addEndangeredAnimal(EndangeredAnimal additionalEndangeredAnimal) {
         try (Connection db = Database.getConnect().open()) {

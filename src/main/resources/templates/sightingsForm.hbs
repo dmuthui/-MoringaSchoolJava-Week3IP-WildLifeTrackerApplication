@@ -62,17 +62,30 @@
                                         <select id="animal_name" name="animal_name" type="text" class="form-control" required></select>
                                     </div>
                                     <div class="form-group">
-                                        <label for="location" class="in-line" style="color: green;"><strong>ANIMAL LOCATION:</strong></label>
-                                        <select id="location" name="location" type="text" class="form-control transparentInputFields" required>
-                                            <option value="Zone A">Zone A</option>
-                                            <option value="Zone B">Zone B</option>
-                                            <option value="Zone C">Zone C</option>
-                                            <option value="Zone D">Zone D</option>
-                                        </select>
+                                        <div class="form-group">
+                                            <label for="location" class="in-line" style="color: green;"><strong>ANIMAL LOCATION:</strong></label>
+                                            <select id="location" name="location" type="text" class="form-control transparentInputFields" required>
+                                                {{#if locations}}
+                                                    {{#each locations}}
+                                                        <option value="{{zones_name}}">{{zones_name}}</option>
+                                                    {{/each}}
+                                                {{else}}
+                                                    <option value="" disabled>No locations found</option>
+                                                {{/if}}
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="rangers_name" class="in-line" style="color: green;"><strong>RANGER NAME:</strong></label>
-                                        <input type="text" name="rangers_name" class="form-control transparentInputFields" required>
+                                        <select name="rangers_name" class="form-control transparentInputFields" required>
+                                            {{#if rangers}}
+                                                {{#each rangers}}
+                                                    <option value="{{rangers_name}}">{{rangers_name}} ({{badge_number}} {{rangers_description}})</option>
+                                                {{/each}}
+                                            {{else}}
+                                                <option value="" disabled>No rangers found</option>
+                                            {{/if}}
+                                        </select>
                                     </div>
                                     <button class="btn btn-info black-text-white-border" type="submit" name="add-sighting" style="background-color: yellow;"><strong>Add Sighting</strong></button>
                                 </form>

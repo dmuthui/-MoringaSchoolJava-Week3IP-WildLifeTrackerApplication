@@ -10,7 +10,15 @@ import java.sql.SQLOutput;
 import java.util.List;
 
 public class SightingsDao {
-       //ADDS A SIGHTING INTO THE DATABASE
+     //THIS CODE CREATES THE SIGHTINGS TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {System.out.println(error.getMessage());}
+    }
+    //ADDS A SIGHTING INTO THE DATABASE
      public static void addSighting(Sightings additionalSighting) {
          try (Connection db = Database.getConnect().open()) {
             // Database action

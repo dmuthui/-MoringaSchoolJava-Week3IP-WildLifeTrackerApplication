@@ -24,6 +24,17 @@ public class App {
      //INITIALIZATION OF THE HANDLEBARS
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
+    //THE ROUTE TO VIEW HOME PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
+        get("/", (request, response) -> {
+            Map<String, Object> WildLifeTrackerList = new HashMap<>();
+            EndangeredAnimalDao.getStarted();
+            LocationsDao.getStarted();
+            RangersDao.getStarted();
+            RegularAnimalDao.getStarted();
+            SightingsDao.getStarted();
+            return new ModelAndView(new HashMap<>(), "home.hbs");
+        }, engine);
+
      //THE ROUTE TO VIEW HOME PAGE
         get("/", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "home.hbs");
@@ -214,12 +225,12 @@ public class App {
             Locations additionalLocations = new Locations(locations_id, zones_name, zones_descriptions, zones_quadrant, location_sightings, deleted);
             // Add the locations to the database
             LocationsDao.addLocation(additionalLocations);
-            // Redirect to the Locations list page
+            // Redirect to the locations list page
             response.redirect("/locations-list");
             return null;
         });
 
-    // THE ROUTE TO HANDLE GETTING ALL RANGERS FROM DATABASE ON THE RANGERS LIST
+    // THE ROUTE TO HANDLE GETTING ALL LOCATIONS FROM DATABASE ON THE LOCATIONS LIST
         // Define route for Locations list page
         get("/locations-list", (req, res) -> {
             // Get the list of Locations from the database

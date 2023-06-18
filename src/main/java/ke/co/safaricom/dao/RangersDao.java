@@ -8,6 +8,14 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class RangersDao {
+    //THIS CODE CREATES THE RANGERS TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS rangers(rangers_id SERIAL PRIMARY KEY, rangers_name varchar, badge_number varchar UNIQUE, rangers_contact integer UNIQUE, rangers_description varchar, rangers_sightings varchar,deleted BOOLEAN DEFAULT false);";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {System.out.println(error.getMessage());}
+    }
 
     //ADDS A RANGER INTO THE DATABASE
     public static void addRanger(Rangers additionalRanger) {

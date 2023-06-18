@@ -8,6 +8,14 @@ import org.sql2o.Connection;
 import java.util.List;
 
 public class LocationsDao {
+    //THIS CODE CREATES THE LOCATIONS TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS locations(locations_id SERIAL PRIMARY KEY, zones_name varchar, zones_descriptions varchar, zones_quadrant varchar, location_sightings varchar,deleted BOOLEAN DEFAULT false);";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {System.out.println(error.getMessage());}
+    }
 
     //ADDS A LOCATION INTO THE DATABASE
     public static void addLocation(Locations additionalLocation) {

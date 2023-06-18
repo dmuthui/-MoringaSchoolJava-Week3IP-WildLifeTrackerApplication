@@ -8,6 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RegularAnimalDao {
+    //THIS CODE CREATES THE REGULAR ANIMAL TABLE AUTOMATICALLY ON THE DATABASE ON STARTING THE APP
+    public static void getStarted (){
+
+        try(Connection db = Database.getConnect().open()){
+            String createTable = "CREATE TABLE IF NOT EXISTS regular_animal(regular_animal_id SERIAL PRIMARY KEY, animalName varchar, health varchar, age varchar, deleted boolean default false);";
+            db.createQuery(createTable).executeUpdate();
+        } catch (Exception error) {System.out.println(error.getMessage());}
+    }
 
     //ADDS A REGULAR ANIMAL INTO THE DATABASE
     public static void addRegularAnimal(RegularAnimal additionalRegularAnimal) {
