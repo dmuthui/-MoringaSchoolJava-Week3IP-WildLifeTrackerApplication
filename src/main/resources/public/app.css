@@ -156,3 +156,65 @@ h1, h2, p, li, a {
 .views {
   height: 150vh;
 }
+
+//SEARCH PAGE STYLING
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300vh;
+    margin-top: 20px;
+}
+
+.search-fieldset {
+    border: 3px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.search-box-title {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.search-form {
+    margin-top: 5px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-row {
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-row .col-md-2 {
+    flex-basis: calc(33.33% - 20px);
+    margin-bottom: 20px;
+    margin-right: 85px;
+}
+
+.form-row .col-md-2:last-child {
+    margin-right: 0;
+}
+
+.form-row .col-md-2 label,
+.form-row .col-md-2 input[type="text"] {
+    width: 170%;
+    box-sizing: border-box;
+}
+
+.form-row .col-md-2 label {
+    display: inline-block;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+.form-row .col-md-2 button {
+    width: auto;
+    flex-basis: auto;
+}
