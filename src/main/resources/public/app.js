@@ -33,6 +33,26 @@ $(document).ready(function() {
      // Perform the deletion action
      window.location.href = "/delete-animal_name/" + animal_name;
  }
+
+ //FUNCTION THAT GIVES AN ALERT IF YOU WANT TO DELETE A RANGER
+  function confirmsDelete(rangers_name) {
+      var result = confirm("Are you sure you want to delete the  ranger " + rangers_name + "?");
+      if (!result) {
+          return false; // Cancel button was clicked, return false to prevent deletion
+      }
+      // Perform the deletion action
+      window.location.href = "/delete-rangers_name/" + rangers_name;
+  }
+
+   //FUNCTION THAT GIVES AN ALERT IF YOU WANT TO DELETE A LOCATION
+    function confirmedDelete(zones_name) {
+        var result = confirm("Are you sure you want to delete the location " + zones_name + "?");
+        if (!result) {
+            return false; // Cancel button was clicked, return false to prevent deletion
+        }
+        // Perform the deletion action
+        window.location.href = "/delete-zones_name/" + zones_name;
+    }
  //VALIDATES ADD ANIMAL FORM DATA ENTRY:SENDS ALERT WHEN YOU CLICK BLANK FORM FOR SUBMISSION
  function validateForm() {
      var animalName = document.getElementById("animalName").value.toUpperCase().trim(); // Trim whitespace

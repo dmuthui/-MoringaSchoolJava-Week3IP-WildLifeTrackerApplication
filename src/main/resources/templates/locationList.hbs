@@ -41,10 +41,10 @@
                             <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>Add Animal Sighting</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/add-rangers"><span style="color: black;"><strong>Rangers List</strong></span></a>
+                            <a class="nav-link border border-dark rounded" href="/add-rangers" style="color: green; border-color: white;"><strong>Add A Ranger</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/add-locations"><span style="color: black;"><strong>Location List</strong></span></a>
+                            <a class="nav-link border border-dark rounded" href="/add-locations" style="color: green; border-color: white;"><strong>Add A Location</strong></a>
                         </li>
                     </ul>
                 </div>
@@ -60,7 +60,7 @@
                                 <th><strong>ZONE NAME:</strong></th>
                                 <th><strong>ZONE DESCRIPTION:</strong></th>
                                 <th><strong>ZONE QUADRANT</strong></th>
-                                <th><strong>ZONE SIGHTINGS:</strong></th>
+                                <th><strong>LOCATION SIGHTINGS:</strong></th>
                                 <th><strong>DELETE FUNCTION:</strong></th>
                             </tr>
                             </thead>
@@ -70,9 +70,9 @@
                                     <td><strong>{{zones_name}}</strong></td>
                                     <td><strong>{{zones_descriptions}}</strong></td>
                                     <td><strong>{{zones_quadrant}}</strong></td>
-                                    <td><strong>{{zones_sightings}}</strong></td>
+                                    <td><strong>{{location_sightings}}</strong></td>
                                     <td>
-                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}" type="button" href="/delete-animal_name/:animal_name{{animal_name}}" onclick="confirmDelete('{{animal_name}}')">
+                                        <a class="btn aqua delete-btn" title="delete {{zones_name}}" type="button" href="/delete-zones_name/:zones_name{{zones_name}}" onclick="confirmedDelete('{{zones_name}}')">
                                             <strong>DELETE</strong>
                                         </a>
                                     </td>

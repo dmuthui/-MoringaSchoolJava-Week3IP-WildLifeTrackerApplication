@@ -13,7 +13,7 @@ public class LocationsDao {
     public static void addLocation(Locations additionalLocation) {
         try (Connection db = Database.getConnect().open()) {
             // Database action
-            String locationAdd = "INSERT INTO locations(zones_name, zones_descriptions, zones_quadrant, location_sightings, deleted) VALUES (UPPER(:zones_name), UPPER(:zones_name), UPPER(:zones_descriptions), UPPER(:zones_quadrant), UPPER(:ocation_sightings) false)";
+            String locationAdd = "INSERT INTO locations(zones_name, zones_descriptions, zones_quadrant, location_sightings, deleted) VALUES (UPPER(:zones_name), UPPER(:zones_descriptions), UPPER(:zones_quadrant), UPPER(:location_sightings), false)";
             db.createQuery(locationAdd)
                     .addParameter("zones_name", additionalLocation.getZones_name())
                     .addParameter("zones_descriptions", additionalLocation.getZones_descriptions())

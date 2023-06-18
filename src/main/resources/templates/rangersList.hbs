@@ -27,6 +27,12 @@
                             <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>Animal Sighting List</strong></span></a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link border border-dark rounded"  href="/rangers-list"><span style="color: green;"><strong>Rangers List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded"  href="/location-list"><span style="color: green;"><strong>Location List</strong></span></a>
+                        </li>
+                        <li class="nav-item">
                             <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: green; font-size: small;">
                                 <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
                             </a>
@@ -41,10 +47,8 @@
                             <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>Add Animal Sighting</strong></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/rangers-list"><span style="color: black;"><strong>Rangers List</strong></span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link border border-dark rounded" href="/location-list"><span style="color: black;"><strong>Location List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-rangers"><strong>Add Wildlife Ranger</strong><i class="fas fa-angle-double-right"></i>
+                        </a>
                         </li>
                     </ul>
                 </div>
@@ -74,7 +78,7 @@
                                     <td><strong>{{rangers_description}}</strong></td>
                                     <td><strong>{{rangers_sightings}}</strong></td>
                                     <td>
-                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}" type="button" href="/delete-animal_name/:animal_name{{animal_name}}" onclick="confirmDelete('{{animal_name}}')">
+                                        <a class="btn aqua delete-btn" title="delete {{rangers_name}}" type="button" href="/delete-rangers_name/:rangers_name{{rangers_name}}" onclick="confirmsDelete('{{rangers_name}}')">
                                             <strong>DELETE</strong>
                                         </a>
                                     </td>
