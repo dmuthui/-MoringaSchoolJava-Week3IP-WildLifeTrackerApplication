@@ -1,3 +1,4 @@
+//STYLES FOR THE ALL THE PROJECT PAGES
 html,
 body,
 header,
@@ -107,11 +108,13 @@ hr {
   color: black;
   border-color: white;
 }
+
 //About App Page
 
 h1, h2, p, li, a {
     text-transform: lowerrcase;
 }
+
 //REGULAR ANIMAL TABLE STYLES
 .table-text.light-grey {
   background-color: lightgrey;
@@ -121,6 +124,7 @@ h1, h2, p, li, a {
   background-color: green;
   color: white;
 }
+
 //DELETE BUTTON ON THE ANIMAL TABLE
     .delete-btn {
         border: 2px solid #000;
