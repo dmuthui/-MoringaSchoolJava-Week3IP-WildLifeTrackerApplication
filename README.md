@@ -5,29 +5,33 @@
 ### Author:**David Muthui Ndungu**
 
 ## Description
-This project is my week three Java IP about Wildlife Tracker App.
+- This project is my week three Java IP about Wildlife Tracker App.
 
 ## What is Wildlife Tracker App?
-The Forest Service is considering a proposal from a timber company to clearcut a nearby forest of Douglas Fir. Before this proposal may be approved, they must complete an environmental impact study.In this regards,the app has been developed.
-The Wildlife Tracker App is a web application built to help Rangers track wildlife sightings in a specific area. The application allows Rangers to record sightings of animals and endangered animals, along with relevant information such as location and Ranger details. It also provides features like reporting exceptions and storing timestamps for each sighting.
+- The Forest Service is considering a proposal from a timber company to clearcut a nearby forest of Douglas Fir. 
+- Before this proposal may be approved, they must complete an environmental impact study.In this regards,the app has been developed.
+- The Wildlife Tracker App is a web application built to help Rangers track wildlife sightings in a specific area. 
+- The application allows Rangers to record sightings of animals and endangered animals, along with relevant information such as location and Ranger details. 
+- It also provides features like reporting exceptions and storing timestamps for each sighting.
 
 
 ## BDD
 - Categories of Wildlife
 - The application tracks two categories of wildlife:
-    Regular Animals:
-       * Regular Animal ID.
-       * Name.
-       * Health:Okay or healthy.
-       * Age:Adult or Middle age
 
-    Endangered Animals:
+- Regular Animals:
+     * Regular Animal ID.
+     * Name.
+     * Health:Okay or healthy.
+     * Age:Adult or Middle age
+       
+- Endangered Animals:
      * Endangered Animal ID.
      * Animal Name
      * Health (Options: "healthy", "ill", "okay")
      * Age (Options: "newborn", "young", "adult")
 
-     Sightings
+- Sightings
      * When a wildlife species is spotted, a Ranger can submit a Sighting form containing the following details:
      * ID of Regular Animal or Endangered Animal species
      * Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)
@@ -71,26 +75,27 @@ The Wildlife Tracker App is a web application built to help Rangers track wildli
   \c -connects to the created database.
 - Run the code using the Intellij IDEA and go to the browser and run the Front/User end output on localhost:4567. 
 - Ensure that dependencies are installed on build.gradle.These icludes:
-       dependencies {
-                 testImplementation platform('org.junit:junit-bom:5.9.1')
-                 testImplementation 'org.junit.jupiter:junit-jupiter'
-                 implementation 'com.sparkjava:spark-core:2.9.4'
-                 implementation 'org.slf4j:slf4j-simple:2.0.7'
-                 implementation 'com.sparkjava:spark-template-handlebars:2.7.1'
-                 implementation 'org.apache.commons:commons-lang3:3.12.0'
-                 implementation 'com.github.jknack:handlebars:4.1.2'
-                 implementation 'org.postgresql:postgresql:42.6.0'
-                 implementation 'org.apache.spark:spark-core_2.13:3.4.0'
-                 implementation 'org.postgresql:postgresql:42.6.0'
-                 implementation 'org.sql2o:sql2o:1.6.0'
-                 implementation 'com.google.code.gson:gson:2.8.9'
-       }
+- Dependencies:
+     * testImplementation platform('org.junit:junit-bom:5.9.1')
+     * testImplementation 'org.junit.jupiter:junit-jupiter'
+     * implementation 'com.sparkjava:spark-core:2.9.4'
+     * implementation 'org.slf4j:slf4j-simple:2.0.7'
+     * implementation 'com.sparkjava:spark-template-handlebars:2.7.1'
+     * implementation 'org.apache.commons:commons-lang3:3.12.0'
+     * implementation 'com.github.jknack:handlebars:4.1.2'
+     * implementation 'org.postgresql:postgresql:42.6.0'
+     * implementation 'org.apache.spark:spark-core_2.13:3.4.0'
+     * implementation 'org.postgresql:postgresql:42.6.0'
+     * implementation 'org.sql2o:sql2o:1.6.0'
+     * implementation 'com.google.code.gson:gson:2.8.9'
+                
+
 - If the project has no errors, it will execute as expected.
 
 ## Psql commands used include:
-CREATE DATABASE wildlife_tracker;
-\l -lists the database that have been created
-\c -connects to the created database
+- CREATE DATABASE wildlife_tracker;
+   * \l -lists the database that have been created
+   * \c -connects to the created database
 
 ## For Regular Animal table
 - CREATE TABLE regular_animal(regular_animal_id SERIAL PRIMARY KEY, animalName varchar, health varchar, age varchar, deleted boolean default false);
@@ -135,14 +140,14 @@ CREATE DATABASE wildlife_tracker;
 
 ## Further Explorations
 Consideratin of adding any combination of the following additional features:
--Build a Ranger class. This could include contact information, a badge number, etc. then, associate each Sighting with a Ranger object instead of just a name. Include a page where users may see all Rangers, and click each to see which Sightings they have reported.
--Build a Location class. Associate each Sighting with a Location object instead of just including a location property. Include a page where users may see all Locations in the area, and click one to see all Sightings reported in that region.
--Integrate a drop-down menu that allows the Ranger to select which animal species they have seen.
--Format timestamps for each sighting, and display in your front-end user interface.
--Allow users to sort Sightings by most recent.
--Implement a many-to-many relationship. Assume a sighting may now include multiple species, and animals may be included in multiple sightings.
-Important: If you update your database structure in any fashion, do not forget to update your README's database setup instructions, including the exact setup steps required to re-create your database.
--Brainstorm other errors or misuses of the application that could occur, and include additional exceptions to combat them.
+- Build a Ranger class. This could include contact information, a badge number, etc. then, associate each Sighting with a Ranger object instead of just a name. Include a page where users may see all Rangers, and click each to see which Sightings they have reported.
+- Build a Location class. Associate each Sighting with a Location object instead of just including a location property. Include a page where users may see all Locations in the area, and click one to see all Sightings reported in that region.
+- Integrate a drop-down menu that allows the Ranger to select which animal species they have seen.
+- Format timestamps for each sighting, and display in your front-end user interface.
+- Allow users to sort Sightings by most recent.
+- Implement a many-to-many relationship. Assume a sighting may now include multiple species, and animals may be included in multiple sightings.
+  Important: If you update your database structure in any fashion, do not forget to update your README's database setup instructions, including the exact setup steps required to re-create your database.
+- Brainstorm other errors or misuses of the application that could occur, and include additional exceptions to combat them.
 
 ## To access for code for learning:
 
@@ -155,21 +160,21 @@ Important: If you update your database structure in any fashion, do not forget t
 There are no known bugs on this project.
 
 ## Technologies Used
-•   Written in Java (JDK 11.0.17).
-•   Used Gradle 8.0.2 as a build tool, JVM:11.0.17 and Groovy:3.0.13
-•   Used SQL Shell (psql) - Postgres for the creation of Database.
-•   Used the IntelliJ IDEA as code editor for compiling and running the source code.
-•   Other Dependencies include:
--  junit.jupiter.
--  Spark Core.
--  Template Handlebars.
--  simple:2.0.7.
+-   Written in Java (JDK 11.0.17).
+-   Used Gradle 8.0.2 as a build tool, JVM:11.0.17 and Groovy:3.0.13
+-   Used SQL Shell (psql) - Postgres for the creation of Database.
+-   Used the IntelliJ IDEA as code editor for compiling and running the source code.
+-   Other Dependencies include:
+      * junit.jupiter.
+      * Spark Core.
+      * Template Handlebars.
+      * simple:2.0.7.
 
 ## Support and contact details
-If you need any assistance on any issues or have questions, ideas or concerns. Kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Heroes Squad App project.
+- If you need any assistance on any issues or have questions, ideas or concerns. Kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Heroes Squad App project.
 
 ## GitHub URL Link
-To be able to view the project click on https://github.com/dmuthui/-MoringaSchoolJava-Week3IP-WildLifeTrackerApplication.git
+- To be able to view the project click on https://github.com/dmuthui/-MoringaSchoolJava-Week3IP-WildLifeTrackerApplication.git
 
 
 ### License
