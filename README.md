@@ -65,6 +65,30 @@ Regular animal or Endangered Animal species
 Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)
 Ranger Name:Ranger's details should include contact information, a badge number, etc
 
+## Psql commands used include:
+CREATE DATABASE wildlife_tracker;
+\l -lists the database that have been created
+\c -connects to the created database
+
+CREATE TABLE regular_animal(regular_animal_id SERIAL PRIMARY KEY, animalName varchar, health varchar, age varchar, deleted boolean default false);
+SELECT * FROM regular_animal WHERE not deleted;
+DROP TABLE regular_animal;
+UPDATE regular_animal SET deleted = (true) WHERE animalName = (:animalName);
+
+CREATE TABLE endangered_animal(endangered_animal_id SERIAL PRIMARY KEY, endangeredAnimalName varchar, health varchar, age varchar, deleted boolean default false);
+SELECT * FROM endangered_animal WHERE not deleted;
+DROP TABLE endangered_animal;
+UPDATE endangered_animal SET deleted = (true) WHERE endangeredAnimalName = (:endangeredAnimalName);
+DELETE FROM endangered_animal WHERE not deleted AND endangeredAnimalName = '';
+
+CREATE TABLE sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);
+SELECT * FROM sightings WHERE not deleted;
+DROP TABLE sightings;
+
+CREATE TABLE rangers(rangers_id SERIAL PRIMARY KEY, rangers_name varchar, badge_number varchar UNIQUE, rangers_contact integer UNIQUE, rangers_description varchar, rangers_sightings varchar,deleted BOOLEAN DEFAULT false);
+
+CREATE TABLE locations(locations_id SERIAL PRIMARY KEY, zones_name varchar, zones_descriptions varchar, zones_quadrant varchar, location_sightings varchar,deleted BOOLEAN DEFAULT false);
+
 ## Setup/Installation Requirements
 - Run the code
 - Enter the details that include and not limited to:
@@ -103,7 +127,6 @@ There are no known bugs on this project.
 -  Spark Core.
 -  Template Handlebars.
 -  simple:2.0.7.
-
 
 ## Support and contact details
 If you need any assistance on any issues or have questions, ideas or concerns. Kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Heroes Squad App project.
