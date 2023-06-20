@@ -47,7 +47,7 @@
                             <div class="col-sm-4 col-sm-offset-4">
                                 <form action="/add-sighting" method="post">
                                     <div class="form-group">
-                                        <label for="animalType" style="color: green;"><strong>ANIMAL CATEGORY:</strong></label><br>
+                                        <label for="animalType" style="color: black;"><strong>ANIMAL CATEGORY:</strong></label><br>
                                         <label>
                                             <input type="radio" name="animal_category" id="regularAnimal" value="regular">
                                             Regular Animal
@@ -58,32 +58,32 @@
                                         </label>
                                     </div>
                                     <div class="form-group">
-                                        <label for="animal_name" class="in-line" style="color: green;"><strong>ANIMAL NAME:</strong></label>
+                                        <label for="animal_name" class="in-line" style="color: black;"><strong>ANIMAL NAME:</strong></label>
                                         <select id="animal_name" name="animal_name" type="text" class="form-control" required></select>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <label for="location" class="in-line" style="color: green;"><strong>ANIMAL LOCATION:</strong></label>
-                                            <select id="location" name="location" type="text" class="form-control transparentInputFields" required>
-                                                {{#if locations}}
-                                                    {{#each locations}}
-                                                        <option value="{{zones_name}}">{{zones_name}}</option>
+                                            <label for="zones_name" class="in-line" style="color: black;"><strong>ANIMAL LOCATION:</strong></label>
+                                            <select name="zones_name" class="form-control" required>
+                                                {{#if location}}
+                                                    {{#each location}}
+                                                        <option value="{{zones_name}}">
+                                                        Zone name: {{zones_name}}=> Description=>{{zones_descriptions}}=>Quadrant: {{zones_quadrant}}</option>
                                                     {{/each}}
                                                 {{else}}
-                                                    <option value="" disabled>No locations found</option>
                                                 {{/if}}
                                             </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="rangers_name" class="in-line" style="color: green;"><strong>RANGER NAME:</strong></label>
-                                        <select name="rangers_name" class="form-control transparentInputFields" required>
-                                            {{#if rangers}}
-                                                {{#each rangers}}
-                                                    <option value="{{rangers_name}}">{{rangers_name}} ({{badge_number}} {{rangers_description}})</option>
+                                        <label for="rangers_name" class="in-line" style="color: black;"><strong>RANGER NAME:</strong></label>
+                                        <select name="rangers_name" class="form-control" required>
+                                            {{#if ranger}}
+                                                {{#each ranger}}
+                                                    <option value="{{rangers_name}}">
+                                                        Name: {{rangers_name}} => Badge Number:{{badge_number}}=>Contact: {{rangers_contact}}
+                                                    </option>
                                                 {{/each}}
-                                            {{else}}
-                                                <option value="" disabled>No rangers found</option>
                                             {{/if}}
                                         </select>
                                     </div>

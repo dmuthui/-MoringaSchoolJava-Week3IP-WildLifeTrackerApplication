@@ -108,9 +108,17 @@ public class App {
         }, engine);
 
     //THE ROUTE TO SERVE ADD SIGHTING AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
-        get("/add-sighting", (request, response) -> {
-            return new ModelAndView(new HashMap<>(), "sightingsForm.hbs");
+        //ROUTE FOR RETRIEVING ALL LOCATIONS ON THE ADD SIGHTINGFORM
+        get("/add-sighting", (req, res) -> {
+            // Retrieve data for rendering the form
+            Map<String, Object> LocationsList = new HashMap<>();
+            LocationsList.put("location", LocationsDao.getAllLocations());
+            LocationsList.put("ranger", RangersDao.getAllRangers());
+            System.out.println( LocationsList);
+            // Render the form template with the data
+            return new ModelAndView(LocationsList, "sightingsForm.hbs");
         }, engine);
+
 
     //ROUTE TO SERVE POSTING OF REPORT/RECORD A SIGHTING TO THE DATABASE
         // Define route for sighting form submission
@@ -119,11 +127,12 @@ public class App {
             Integer sighting_id = null;
             String animal_category = request.queryParams("animal_category");
             String animal_name = request.queryParams("animal_name");
-            String location = request.queryParams("location");
+            String zones_name = request.queryParams("zones_name");
             String rangers_name = request.queryParams("rangers_name");
+            LocalDateTime sighting_time = null;
             Boolean deleted = false;
             // Create a new sighting object
-            Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, location, rangers_name, deleted);
+            Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, zones_name, rangers_name, sighting_time,  deleted);
             // Add the sighting to the database
             SightingsDao.addSighting(additionalSighting);
             // Redirect to the sighting list page
@@ -194,7 +203,7 @@ public class App {
             // Get the list of rangers from the database
             Map<String, List<Rangers>> rangersList = new HashMap<>();
             // Render the rangers list template with the rangers data
-            rangersList.put("rangers", RangersDao.getAllRangers());
+            rangersList.put("ranger", RangersDao.getAllRangers());
             return new ModelAndView(rangersList, "rangersList.hbs");
         }, engine);
 
@@ -236,7 +245,7 @@ public class App {
             // Get the list of Locations from the database
             Map<String, List<Locations>> LocationsList = new HashMap<>();
             // Render the Locations list template with the Locations data
-            LocationsList.put("locations", LocationsDao.getAllLocations());
+            LocationsList.put("location", LocationsDao.getAllLocations());
             return new ModelAndView(LocationsList, "locationList.hbs");
         }, engine);
 
@@ -247,6 +256,7 @@ public class App {
             res.redirect("/locations-list");
             return null;
         }, engine);
+
 
 
     //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE

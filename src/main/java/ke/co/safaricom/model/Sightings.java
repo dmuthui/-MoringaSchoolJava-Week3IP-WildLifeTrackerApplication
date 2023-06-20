@@ -1,20 +1,24 @@
 package ke.co.safaricom.model;
 
 
+import java.time.LocalDateTime;
+
 public class Sightings {
     private Integer sighting_id;
     private String animal_category;
     private String animal_name;
     private String location;
     private String rangers_name;
+    private LocalDateTime sighting_time;
     private Boolean deleted = false;
 
-    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, Boolean deleted) {
+    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, LocalDateTime sighting_time, Boolean deleted) {
         this.sighting_id = sighting_id;
         this.animal_category = animal_category;
         this.animal_name = animal_name;
         this.location = location;
         this.rangers_name = rangers_name;
+        this.sighting_time = sighting_time;
         this.deleted = deleted;
     }
 
@@ -58,6 +62,14 @@ public class Sightings {
         this.rangers_name = rangers_name;
     }
 
+    public LocalDateTime getSighting_time() {
+        return sighting_time;
+    }
+
+    public void setSighting_time(LocalDateTime sighting_time) {
+        this.sighting_time = sighting_time;
+    }
+
     public Boolean getDeleted() {
         return deleted;
     }
@@ -74,6 +86,7 @@ public class Sightings {
                 ", animal_name='" + animal_name + '\'' +
                 ", location='" + location + '\'' +
                 ", rangers_name='" + rangers_name + '\'' +
+                ", sighting_time=" + sighting_time +
                 ", deleted=" + deleted +
                 '}';
     }
