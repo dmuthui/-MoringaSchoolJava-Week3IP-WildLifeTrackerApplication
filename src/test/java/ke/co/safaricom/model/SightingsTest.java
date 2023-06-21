@@ -37,7 +37,7 @@ class SightingsTest {
     @DisplayName("Test to check whether the rangers name passes the test")
     @Test
     void getRangers_name() {
-        Sightings mySighting = new Sightings(1, "Endangered", "White Rhino", "Zone C", "Emerald", false);
+        Sightings mySighting = new Sightings(1, "Endangered", "White Rhino", "Zone C", "Emerald", "",false);
         String expected = "Emerald";
         assertEquals("Emerald", mySighting.getRangers_name());
     }

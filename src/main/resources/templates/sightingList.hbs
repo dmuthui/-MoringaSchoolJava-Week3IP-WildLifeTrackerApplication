@@ -48,7 +48,7 @@
             <div class="table-column">
                 {{#if sightings}}
                     <div class="table-responsive">
-                        <table class="table table-bordered table-text light-grey">
+                        <table class="table table-bordered table-text light-grey text-left">
                             <thead class="thead-green">
                             <tr>
                                 <th><strong>ANIMAL CATEGORY:</strong></th>
@@ -63,10 +63,24 @@
                                 <tr>
                                     <td><strong>{{animal_category}}</strong></td>
                                     <td><strong>{{animal_name}}</strong></td>
-                                    <td><strong>{{location}}</strong></td>
-                                    <td><strong>{{rangers_name}}</strong></td>
                                     <td>
-                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}" type="button" href="/delete-animal_name/:animal_name{{animal_name}}" onclick="confirmDelete('{{animal_name}}')">
+                                        {{#if location}}
+                                        Zone_name: <strong>{{location}}</strong><br>
+                                        Zone_description: {{zones_descriptions}}<br>
+                                        Zone_quadrant: {{zones_quadrant}}
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if ranger}}
+                                        Ranger_name: <strong>{{rangers_name}}</strong><br>
+                                        Badge_number: {{badge_number}}<br>
+                                        Ranger_contact: {{rangers_contact}}
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}"
+                                           type="button" href="/delete-animal_name/:animal_name{{animal_name}}"
+                                           onclick="confirmDelete('{{animal_name}}')">
                                             <strong>DELETE</strong>
                                         </a>
                                     </td>
@@ -77,12 +91,12 @@
                     </div>
                 {{else}}
                     <div class="no-data">
-                        <strong>There is no sighting that has currently been reported or recorded.Please Add Animal Sighting using the link above.</strong>
+                        <strong>There is no sighting that has currently been reported or recorded. Please Add Animal Sighting
+                            using the link above.</strong>
                     </div>
                 {{/if}}
             </div>
         </div>
     </div>
-
 {{/partial}}
 {{>layout.hbs}}

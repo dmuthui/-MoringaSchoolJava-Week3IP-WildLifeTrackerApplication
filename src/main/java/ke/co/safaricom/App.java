@@ -9,7 +9,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -108,13 +108,11 @@ public class App {
         }, engine);
 
     //THE ROUTE TO SERVE ADD SIGHTING AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
-        //ROUTE FOR RETRIEVING ALL LOCATIONS ON THE ADD SIGHTINGFORM
         get("/add-sighting", (req, res) -> {
             // Retrieve data for rendering the form
             Map<String, Object> LocationsList = new HashMap<>();
             LocationsList.put("location", LocationsDao.getAllLocations());
             LocationsList.put("ranger", RangersDao.getAllRangers());
-            System.out.println( LocationsList);
             // Render the form template with the data
             return new ModelAndView(LocationsList, "sightingsForm.hbs");
         }, engine);
@@ -144,11 +142,14 @@ public class App {
         // Define route for sighting list page
         get("/sighting-list", (req, res) -> {
             // Get the list of sightings from the database
-            Map<String, List<Sightings>> sightingList = new HashMap<>();
+            Map<String, Object> sightingList = new HashMap<>();
             // Render the sighting list template with the sightings data
             sightingList.put("sightings", SightingsDao.getAllSightings());
+            sightingList.put("location", LocationsDao.getDescriptionsandQuadrant());
+            sightingList.put("ranger", RangersDao.getBadgeNumberAndContact());
             return new ModelAndView(sightingList, "sightingList.hbs");
         }, engine);
+
 
 
     //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
