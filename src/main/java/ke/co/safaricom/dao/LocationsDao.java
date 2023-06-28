@@ -22,12 +22,7 @@ public class LocationsDao {
         try (Connection db = Database.getConnect().open()) {
             // Database action
             String locationAdd = "INSERT INTO locations(zones_name, zones_descriptions, zones_quadrant, location_sightings, deleted) VALUES (UPPER(:zones_name), UPPER(:zones_descriptions), UPPER(:zones_quadrant), UPPER(:location_sightings), false)";
-            db.createQuery(locationAdd)
-                    .addParameter("zones_name", additionalLocation.getZones_name())
-                    .addParameter("zones_descriptions", additionalLocation.getZones_descriptions())
-                    .addParameter("zones_quadrant", additionalLocation.getZones_quadrant())
-                    .addParameter("location_sightings", additionalLocation.getLocation_sightings())
-                    .executeUpdate();
+            db.createQuery(locationAdd).bind(additionalLocation).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
 

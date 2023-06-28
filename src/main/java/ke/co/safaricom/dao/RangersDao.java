@@ -22,13 +22,7 @@ public class RangersDao {
         try (Connection db = Database.getConnect().open()) {
             // Database action
             String rangerAdd = "INSERT INTO rangers(rangers_name, badge_number, rangers_contact, rangers_description, rangers_sightings,deleted) VALUES (UPPER(:rangers_name), :badge_number, :rangers_contact,UPPER(:rangers_description),UPPER(:rangers_sightings), false)";
-            db.createQuery(rangerAdd)
-                    .addParameter("rangers_name", additionalRanger.getRangers_name())
-                    .addParameter("badge_number", additionalRanger.getBadge_number())
-                    .addParameter("rangers_contact", additionalRanger.getRangers_contact())
-                    .addParameter("rangers_description", additionalRanger.getRangers_description())
-                    .addParameter("rangers_sightings", additionalRanger.getRangers_sightings())
-                    .executeUpdate();
+            db.createQuery(rangerAdd).bind(additionalRanger).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }

@@ -22,11 +22,7 @@ public class EndangeredAnimalDao {
         try (Connection db = Database.getConnect().open()) {
             // Database action
             String endangeredAnimalAdd = "INSERT INTO endangered_animal(endangeredAnimalName, health, age, deleted) VALUES (UPPER(:endangeredAnimalName), :health, :age, false)";
-            db.createQuery(endangeredAnimalAdd)
-                    .addParameter("endangeredAnimalName", additionalEndangeredAnimal.getEndangeredAnimalName())
-                    .addParameter("health", additionalEndangeredAnimal.getHealth())
-                    .addParameter("age", additionalEndangeredAnimal.getAge())
-                    .executeUpdate();
+            db.createQuery(endangeredAnimalAdd).bind(additionalEndangeredAnimal).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }

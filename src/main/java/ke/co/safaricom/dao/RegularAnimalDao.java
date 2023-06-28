@@ -22,11 +22,7 @@ public class RegularAnimalDao {
         try (Connection db = Database.getConnect().open()) {
             // Database action
             String regularAnimalAdd = "INSERT INTO regular_animal(animalName, health, age, deleted) VALUES (UPPER(:animalName), :health, :age, false)";
-            db.createQuery(regularAnimalAdd)
-                    .addParameter("animalName", additionalRegularAnimal.getAnimalName())
-                    .addParameter("health", additionalRegularAnimal.getHealth())
-                    .addParameter("age", additionalRegularAnimal.getAge())
-                    .executeUpdate();
+            db.createQuery(regularAnimalAdd).bind(additionalRegularAnimal).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
         }

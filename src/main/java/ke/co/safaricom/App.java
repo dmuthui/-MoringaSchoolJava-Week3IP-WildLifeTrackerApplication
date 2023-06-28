@@ -262,7 +262,7 @@ public class App {
             return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
         }, engine);
 
-    //THE SEARCH PAGE PARAMETERS:Have been implemented using jQuerry
+    //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
 
     }
 }

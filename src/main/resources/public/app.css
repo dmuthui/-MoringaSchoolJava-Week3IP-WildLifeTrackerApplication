@@ -2,7 +2,7 @@
 html,
 body,
 header,
-.view {
+.views {
   height: 95vh;
 }
 .content{
@@ -11,14 +11,14 @@ header,
  margin-bottom: 30px;
  margin-left: 5%;
  margin-right: 5%;
- height: 220%;
+ height: 250%;
 }
 
 @media (max-width: 740px) {
   html,
   body,
   header,
-  .view {
+  .views {
     height: 100vh;
   }
 }
@@ -42,7 +42,7 @@ header,
                              html,
                                body,
                                header,
-                               .view {
+                               .views {
                                  height: 100vh;
                                }
                           } }
@@ -53,7 +53,7 @@ header,
                              html,
                                body,
                                header,
-                               .view {
+                               .views {
                                  height: 100vh;
                                }
                           } }
@@ -117,12 +117,15 @@ h1, h2, p, li, a {
     text-transform: lowerrcase;
 }
 
-//REGULAR ANIMAL TABLE STYLES
+//ALL TABLE STYLES
 .table-text.light-grey {
   background-color: lightgrey;
   height:100%;
 }
-
+ .table-responsive {
+    height: 350px;
+    overflow-y: auto;
+  }
 .thead-green {
   background-color: green;
   color: white;
@@ -143,15 +146,17 @@ h1, h2, p, li, a {
         color: white;
     }
 
-//TABLE SIZE STYLYING FOR REGULAR/ENDANGERED ANIMALS TABLES
+//TABLE SIZE STYLYING FOR ALL TABLES
      .table-container {
          margin-top: 20px;
+
      }
 
      .table-column {
          display: inline-block;
          vertical-align: top;
          width: 70%;
+
      }
 
      @media (max-width: 767px) {
@@ -160,7 +165,8 @@ h1, h2, p, li, a {
              width: 100%;
          }
      }
+
 .views {
-  height: 170vh;
+  height: 230vh;
   text-align: center;
 }
