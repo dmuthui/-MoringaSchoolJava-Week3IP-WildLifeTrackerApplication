@@ -2,6 +2,7 @@ package ke.co.safaricom.model;
 
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Sightings {
     private Integer sighting_id;
@@ -9,10 +10,10 @@ public class Sightings {
     private String animal_name;
     private String location;
     private String rangers_name;
-    private LocalDateTime sighting_time;
+    private Date sighting_time;
     private Boolean deleted = false;
 
-    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, LocalDateTime sighting_time, Boolean deleted) {
+    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, Date sighting_time, Boolean deleted) {
         this.sighting_id = sighting_id;
         this.animal_category = animal_category;
         this.animal_name = animal_name;
@@ -62,11 +63,11 @@ public class Sightings {
         this.rangers_name = rangers_name;
     }
 
-    public LocalDateTime getSighting_time() {
+    public Date getSighting_time() {
         return sighting_time;
     }
 
-    public void setSighting_time(LocalDateTime sighting_time) {
+    public void setSighting_time(Date sighting_time) {
         this.sighting_time = sighting_time;
     }
 

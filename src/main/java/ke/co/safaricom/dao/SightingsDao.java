@@ -14,7 +14,7 @@ public class SightingsDao {
     public static void getStarted (){
 
         try(Connection db = Database.getConnect().open()){
-            String createTable = "CREATE TABLE IF NOT EXISTS sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);";
+            String createTable = "CREATE TABLE IF NOT EXISTS sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, sighting_time timestamptz, deleted BOOLEAN DEFAULT false);";
             db.createQuery(createTable).executeUpdate();
         } catch (Exception error) {System.out.println(error.getMessage());}
     }
@@ -22,13 +22,8 @@ public class SightingsDao {
      public static void addSighting(Sightings additionalSighting) {
          try (Connection db = Database.getConnect().open()) {
             // Database action
-            String sightingAdd = "INSERT INTO sightings (animal_category, animal_name, location, rangers_name, deleted) VALUES (UPPER(:animal_category), :animal_name, :location, UPPER(:rangers_name), false)";
-            db.createQuery(sightingAdd)
-                    .addParameter("animal_category", additionalSighting.getAnimal_category())
-                    .addParameter("animal_name", additionalSighting.getAnimal_name())
-                    .addParameter("location", additionalSighting.getLocation())
-                    .addParameter("rangers_name", additionalSighting.getRangers_name())
-                    .executeUpdate();
+            String sightingAdd = "INSERT INTO sightings (animal_category, animal_name, location, rangers_name, sighting_time, deleted) VALUES (UPPER(:animal_category), :animal_name, :location, UPPER(:rangers_name), :sighting_time, false)";
+            db.createQuery(sightingAdd).bind(additionalSighting).executeUpdate();
          } catch (Exception ex) {
             System.out.println("Error adding sighting: " + ex.getMessage());
          }

@@ -40,6 +40,10 @@
                         <li class="nav-item">
                             <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>Add Animal Sighting</strong></a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-rangers"><strong>Add Wildlife Ranger</strong>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -48,13 +52,14 @@
             <div class="table-column">
                 {{#if sightings}}
                     <div class="table-responsive">
-                        <table class="table table-bordered table-text light-grey text-left">
+                        <table class="table table-bordered table-text light-grey text-left" id="sightingList">
                             <thead class="thead-green">
                             <tr>
                                 <th><strong>ANIMAL CATEGORY:</strong></th>
                                 <th><strong>ANIMAL NAME:</strong></th>
                                 <th><strong>ANIMAL LOCATION:</strong></th>
                                 <th><strong>RANGERS NAME:</strong></th>
+                                <th><strong>SIGHTING TIME:</strong></th>
                                 <th><strong>DELETE FUNCTION:</strong></th>
                             </tr>
                             </thead>
@@ -64,19 +69,16 @@
                                     <td><strong>{{animal_category}}</strong></td>
                                     <td><strong>{{animal_name}}</strong></td>
                                     <td>
-                                        {{#if location}}
-                                        Zone_name: <strong>{{location}}</strong><br>
-                                        Zone_description: {{zones_descriptions}}<br>
-                                        Zone_quadrant: {{zones_quadrant}}
-                                        {{/if}}
+                                        ZONES_NAME: <strong>{{location}}</strong><br>
+                                        ZONES_DESCRIPTION: {{zones_descriptions}}<br>
+                                        ZONES_QUADRANT: {{zones_quadrant}}
                                     </td>
                                     <td>
-                                        {{#if ranger}}
-                                        Ranger_name: <strong>{{rangers_name}}</strong><br>
-                                        Badge_number: {{badge_number}}<br>
-                                        Ranger_contact: {{rangers_contact}}
-                                        {{/if}}
+                                        RANGERS_NAME:<strong>{{rangers_name}}</strong><br>
+                                        BADGE_NUMBER:<strong>{{badge_number}}</strong><br>
+                                        RANGERS_CONTACT:<strong>{{rangers_contact}}</strong><br>
                                     </td>
+                                    <td>{{sighting_time}}</td>
                                     <td>
                                         <a class="btn aqua delete-btn" title="delete {{animal_name}}"
                                            type="button" href="/delete-animal_name/:animal_name{{animal_name}}"

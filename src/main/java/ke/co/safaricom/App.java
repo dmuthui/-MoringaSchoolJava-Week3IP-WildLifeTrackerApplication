@@ -9,10 +9,7 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static spark.Spark.*;
 
@@ -127,7 +124,7 @@ public class App {
             String animal_name = request.queryParams("animal_name");
             String zones_name = request.queryParams("zones_name");
             String rangers_name = request.queryParams("rangers_name");
-            LocalDateTime sighting_time = null;
+            Date sighting_time = new Date();
             Boolean deleted = false;
             // Create a new sighting object
             Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, zones_name, rangers_name, sighting_time,  deleted);
@@ -265,12 +262,7 @@ public class App {
             return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
         }, engine);
 
-    //THE ROUTE TO SERVE SERACH PAGE AFTER CLICKING ON SEARCH PAGE ON HOME PAGE
-        get("/search-page", (request, response) -> {
-            return new ModelAndView(new HashMap<>(), "searchPage.hbs");
-        }, engine);
-
-    //THE SEARCH PAGE PARAMETERS
+    //THE SEARCH PAGE PARAMETERS:Have been implemented using jQuerry
 
     }
 }

@@ -111,3 +111,11 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.log(error));
     });
 });
+
+//For searching anything on the pages with a table
+$(document).ready( function () {
+    $('#animalsList').DataTable();
+    $('#locationList').DataTable();
+    $('#rangersList').DataTable();
+    $('#sightingList').DataTable();
+} );
