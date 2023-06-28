@@ -3,10 +3,10 @@
 {{/partial}}
 
 {{#partial "content"}}
-    <nav class="navbar navbar-expand-lg navbar-dark green fixed-top">
+    <<nav class="navbar navbar-expand-lg scrolling navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,29 +14,45 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color: yellow;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>HOME</strong></span> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: yellow;"><strong>Regular Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: green;"><strong>REGULAR ANIMAL LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: yellow;"><strong>Endangered Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>ENDANGERED ANIMALS LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: yellow"><strong>Animal Sighting List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>ANIMAL SIGHTING LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: yellow; font-size: small;">
-                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        <a class="nav-link border border-dark rounded" href="/rangers-list"><span style="color: green;"><strong>RANGERS LIST</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/locations-list"><span style="color: green;"><strong>LOCATION LIST</strong></span></a>
+                    </li>
+                    <li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>ADD REGULAR ANIMAL</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>ADD ENDANGERED</strong></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>ADD ANIMAL SIGHTING</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-rangers"><strong>ADD WILDLIFE RANGER</strong>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color:yellow"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-locations"><strong>ADD A LOCATION</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="views" style="background-image: url('/images/binocularsview.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <div class="mask rgba-black-light align-items-center">
             <div class="container">
@@ -48,26 +64,26 @@
                                 <div class="content">
                                     <form action="/add-ranger" method="POST">
                                         <div class="form-group">
-                                            <label for="rangers_name" style="color: yellow"><strong>Ranger's Name:</strong></label>
+                                            <label for="rangers_name" style="color: yellow"><strong>RANGER'S NAME:</strong></label>
                                             <input type="text" class="form-control" id="rangers_name" name="rangers_name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="badge_number" style="color: yellow"><strong>Badge Number:</strong></label>
+                                            <label for="badge_number" style="color: yellow"><strong>BADGE NUMBER:</strong></label>
                                             <input type="text" class="form-control" id="badge_number" name="badge_number" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="rangers_contact" style="color: yellow"><strong>Ranger's Contact:</strong></label>
+                                            <label for="rangers_contact" style="color: yellow"><strong>RANGER'S CONTACT:</strong></label>
                                             <input type="tel" class="form-control" id="rangers_contact" name="rangers_contact" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="rangers_description" style="color: yellow"><strong>Ranger's Description:</strong></label>
+                                            <label for="rangers_description" style="color: yellow"><strong>RANGER'S DESCRIPTION:</strong></label>
                                             <textarea class="form-control" id="rangers_description" name="rangers_description" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="rangers_sightings" style="color: yellow"><strong>Ranger's Sightings:</strong></label>
+                                            <label for="rangers_sightings" style="color: yellow"><strong>RANGER'S SIGHTINGS:</strong></label>
                                             <input type="number" class="form-control" id="rangers_sightings" name="rangers_sightings" min="0" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary"><strong>ADD A RANGER</strong></button>
                                     </form>
                                 </div>
                             </div>

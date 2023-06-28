@@ -3,10 +3,10 @@
 {{/partial}}
 
 {{#partial "content"}}
-    <nav class="navbar navbar-expand-lg navbar-dark green fixed-top">
+    <nav class="navbar navbar-expand-lg scrolling navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,29 +14,45 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>HOME</strong></span> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: black;"><strong>Regular Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: green;"><strong>REGULAR ANIMAL LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: black;"><strong>Endangered Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>ENDANGERED ANIMALS LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: black"><strong>Animal Sighting List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>ANIMAL SIGHTING LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: black; font-size: small;">
-                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        <a class="nav-link border border-dark rounded" href="/rangers-list"><span style="color: green;"><strong>RANGERS LIST</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/locations-list"><span style="color: green;"><strong>LOCATION LIST</strong></span></a>
+                    </li>
+                    <li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>ADD REGULAR ANIMAL</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>ADD ENDANGERED</strong></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>ADD ANIMAL SIGHTING</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-rangers"><strong>ADD WILDLIFE RANGER</strong>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color:black"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-locations"><strong>ADD A LOCATION</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="views" style="background-image: url('/images/endangeredAnimals.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <div class="mask rgba-black-light align-items-center">
             <div class="container">
@@ -48,22 +64,22 @@
                                 <div class="content">
                                     <form action="/add-zone" method="POST">
                                         <div class="form-group">
-                                            <label for="zones_name"><strong>Zone Name:</strong></label>
+                                            <label for="zones_name"><strong>ZONE'S NAME:</strong></label>
                                             <input type="text" class="form-control" id="zones_name" name="zones_name" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="zones_descriptions"  ><strong>Zone Descriptions:</strong></label>
+                                            <label for="zones_descriptions"  ><strong>ZONE'S DESCRIPTION:</strong></label>
                                             <textarea class="form-control" id="zones_descriptions" name="zones_descriptions" rows="3" required></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="zones_quadrant"><strong>Zone Quadrant:</strong></label>
+                                            <label for="zones_quadrant"><strong>ZONE'S QUADRANT:</strong></label>
                                             <input type="text" class="form-control" id="zones_quadrant" name="zones_quadrant" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="location_sightings"><strong>Location Sightings:</strong></label>
+                                            <label for="location_sightings"><strong>LOCATION SIGHTINGS:</strong></label>
                                             <input type="number" class="form-control" id="location_sightings" name="location_sightings" min="0" required>
                                         </div>
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary"><strong>ADD A LOCATION</strong></button>
                                     </form>
                                 </div>
                             </div>

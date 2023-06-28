@@ -3,10 +3,10 @@
 {{/partial}}
 
 {{#partial "content"}}
-    <nav class="navbar navbar-expand-lg navbar-dark green fixed-top">
+    <nav class="navbar navbar-expand-lg scrolling navbar">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <span style="color: yellow;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
+                <span style="color: green;"><i class="fas fa-mask animated rotateIn infinite yellow"></i><strong>The Wildlife Tracker App <i class="fas fa-mask animated rotateIn infinite white"></i></strong></span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,31 +14,46 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/"><span style="color: black;"><strong>Home</strong></span> <span class="sr-only">(current)</span></a>
+                        <a class="nav-link border border-dark rounded" href="/"><span style="color: green;"><strong>HOME</strong></span> <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: black;"><strong>Regular Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/regular-animal-list"><span style="color: green;"><strong>REGULAR ANIMAL LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: black;"><strong>Endangered Animals List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/animal-list"><span style="color: green;"><strong>ENDANGERED ANIMALS LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: black"><strong>Animal Sighting List</strong></span></a>
+                        <a class="nav-link border border-dark rounded" href="/sighting-list"><span style="color: green;"><strong>ANIMAL SIGHTING LIST</strong></span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="https://github.com/dmuthui/" onclick="btnClick()" class="nav-link border border-dark rounded" target="_blank" style="color: black; font-size: small;">
-                            <i class="fab fa-github mr-2"></i><strong>GitHub</strong>
+                        <a class="nav-link border border-dark rounded" href="/rangers-list"><span style="color: green;"><strong>RANGERS LIST</strong></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" href="/locations-list"><span style="color: green;"><strong>LOCATION LIST</strong></span></a>
+                    </li>
+                    <li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-animal"><strong>ADD REGULAR ANIMAL</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-endangered"><strong>ADD ENDANGERED</strong></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;" href="/add-sighting"><strong>ADD ANIMAL SIGHTING</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-rangers"><strong>ADD WILDLIFE RANGER</strong>
                         </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link border border-dark rounded" href="/about-app-page"><span style="color:black"><strong>About App Page</strong></span> <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link border border-dark rounded" style="color: green; border-color: white;"  href="/add-locations"><strong>ADD A LOCATION</strong>
+                        </a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="view" style="background-image: url('/images/endangeredAnimals.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+    <div class="views" style="background-image: url('/images/endangeredAnimals.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
         <div class="mask rgba-black-light align-items-center">
             <div class="container">
                 <div class="indexRow">
@@ -67,7 +82,7 @@
                                             <option value="Adult">ADULT</option>
                                         </select>
                                     </div>
-                                    <button class="btn btn-info black-text-white-border" type="submit" name="add-endangered-animal" onclick="return validatedForm()" style="background-color: yellow;"><strong>Add Endangered Animal</strong></button>
+                                    <button class="btn btn-info black-text-white-border" type="submit" name="add-endangered-animal" onclick="return validatedForm()" style="background-color: yellow;"><strong>ADD AN ENDANGERED ANIMAL</strong></button>
                                 </form>
                             </div>
                         </div>
