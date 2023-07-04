@@ -33,10 +33,10 @@ class SightingsTest {
 
     @DisplayName("Test to check the value of location")
     @Test
-    void getLocation() {
+    void getZonesName() {
         Sightings mySighting = new Sightings(1, "Regular or Endangered", "White Rhino", "Zone C", "Emerald", new Date(), false);
         String expected = "Zone C";
-        assertEquals("Zone C", mySighting.getLocation());
+        assertEquals("Zone C", mySighting.getZones_name());
     }
 
     @DisplayName("Test to check the value of Rangers_name")

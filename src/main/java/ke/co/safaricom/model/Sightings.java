@@ -8,20 +8,21 @@ public class Sightings {
     private Integer sighting_id;
     private String animal_category;
     private String animal_name;
-    private String location;
+    private String zones_name;
     private String rangers_name;
     private Date sighting_time;
     private Boolean deleted = false;
 
-    public Sightings(Integer sighting_id, String animal_category, String animal_name, String location, String rangers_name, Date sighting_time, Boolean deleted) {
+    public Sightings(Integer sighting_id, String animal_category, String animal_name, String zones_name, String rangers_name, Date sighting_time, Boolean deleted) {
         this.sighting_id = sighting_id;
         this.animal_category = animal_category;
         this.animal_name = animal_name;
-        this.location = location;
+        this.zones_name = zones_name;
         this.rangers_name = rangers_name;
         this.sighting_time = sighting_time;
         this.deleted = deleted;
     }
+
 
     public Integer getSighting_id() {
         return sighting_id;
@@ -47,12 +48,12 @@ public class Sightings {
         this.animal_name = animal_name;
     }
 
-    public String getLocation() {
-        return location;
+    public String getZones_name() {
+        return zones_name;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setZones_name(String zones_name) {
+        this.zones_name = zones_name;
     }
 
     public String getRangers_name() {
@@ -85,7 +86,7 @@ public class Sightings {
                 "sighting_id=" + sighting_id +
                 ", animal_category='" + animal_category + '\'' +
                 ", animal_name='" + animal_name + '\'' +
-                ", location='" + location + '\'' +
+                ", zones_name='" + zones_name + '\'' +
                 ", rangers_name='" + rangers_name + '\'' +
                 ", sighting_time=" + sighting_time +
                 ", deleted=" + deleted +

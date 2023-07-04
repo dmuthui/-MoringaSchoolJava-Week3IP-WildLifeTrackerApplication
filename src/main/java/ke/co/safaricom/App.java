@@ -141,9 +141,10 @@ public class App {
             // Get the list of sightings from the database
             Map<String, Object> sightingList = new HashMap<>();
             // Render the sighting list template with the sightings data
-            sightingList.put("sightings", SightingsDao.getAllSightings());
+            sightingList.put("sighting", SightingsDao.getAllSightings());
             sightingList.put("location", LocationsDao.getDescriptionsandQuadrant());
             sightingList.put("ranger", RangersDao.getBadgeNumberAndContact());
+
             return new ModelAndView(sightingList, "sightingList.hbs");
         }, engine);
 
@@ -265,4 +266,5 @@ public class App {
     //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
 
     }
+
 }

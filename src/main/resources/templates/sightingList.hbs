@@ -55,55 +55,54 @@
         </nav>
         <div class="table-container">
             <div class="table-column">
-                {{#if sightings}}
+                {{#if sighting}}
                     <div class="table-responsive">
                         <table class="table table-bordered table-text light-grey text-left" id="sightingList">
                             <thead class="thead-green">
-                            <tr>
+                              <tr>
                                 <th><strong>ANIMAL CATEGORY:</strong></th>
                                 <th><strong>ANIMAL NAME:</strong></th>
                                 <th><strong>ANIMAL LOCATION:</strong></th>
                                 <th><strong>RANGERS NAME:</strong></th>
                                 <th><strong>SIGHTING TIME:</strong></th>
                                 <th><strong>DELETE FUNCTION:</strong></th>
-                            </tr>
+                              </tr>
                             </thead>
                             <tbody>
-                            {{#each sightings}}
-                                <tr>
-                                    <td><strong>{{animal_category}}</strong></td>
-                                    <td><strong>{{animal_name}}</strong></td>
-                                    <td>
-                                        ZONES_NAME: <strong>{{location}}</strong><br>
-                                        ZONES_DESCRIPTION: {{zones_descriptions}}<br>
-                                        ZONES_QUADRANT: {{zones_quadrant}}
-                                    </td>
-                                    <td>
-                                        RANGERS_NAME:<strong>{{rangers_name}}</strong><br>
-                                        BADGE_NUMBER:<strong>{{badge_number}}</strong><br>
-                                        RANGERS_CONTACT:<strong>{{rangers_contact}}</strong><br>
-                                    </td>
-                                    <td>{{sighting_time}}</td>
-                                    <td>
-                                        <a class="btn aqua delete-btn" title="delete {{animal_name}}"
-                                           type="button" href="/delete-animal_name/:animal_name{{animal_name}}"
-                                           onclick="confirmDelete('{{animal_name}}')">
-                                            <strong>DELETE</strong>
-                                        </a>
-                                    </td>
-                                </tr>
-                            {{/each}}
+                                 {{#each sighting}}
+                                        <tr>
+                                            <td><strong>{{animal_category}}</strong></td>
+                                            <td><strong>{{animal_name}}</strong></td>
+                                            <td>
+                                                ZONES_NAME:<strong>{{zones_name}}</strong><br>
+                                                ZONES_DESCRIPTION:<strong>{{zones_descriptions}}</strong><br>
+                                                ZONES_QUADRANT:<strong>{{zones_quadrant}}</strong><br>
+                                            </td>
+                                            <td>
+                                                RANGERS_NAME:<strong>{{rangers_name}}</strong><br>
+                                                BADGE_NUMBER:<strong>{{badge_number}}</strong><br>
+                                                RANGERS_CONTACT:<strong>{{rangers_contact}}</strong><br>
+                                            </td>
+                                            <td>{{sighting_time}}</td>
+                                            <td>
+                                                <a class="btn aqua delete-btn" title="delete {{animal_name}}"
+                                                   type="button" href="/delete-animal_name/:animal_name{{animal_name}}"
+                                                   onclick="confirmDelete('{{animal_name}}')">
+                                                    <strong>DELETE</strong>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                 {{/each}}
                             </tbody>
                         </table>
                     </div>
                 {{else}}
                     <div class="no-data">
-                        <strong>There is no sighting that has currently been reported or recorded. Please Add Animal Sighting
-                            using the link above.</strong>
+                        <strong>There is no sighting that has currently been reported or recorded. Please Add Animal Sighting using the link above.</strong>
                     </div>
                 {{/if}}
             </div>
         </div>
     </div>
 {{/partial}}
-{{>layout.hbs}}
+{{> layout.hbs}}
