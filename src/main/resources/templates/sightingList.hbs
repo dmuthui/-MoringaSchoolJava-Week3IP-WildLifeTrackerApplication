@@ -59,30 +59,32 @@
                     <div class="table-responsive">
                         <table class="table table-bordered table-text light-grey text-left" id="sightingList">
                             <thead class="thead-green">
-                              <tr>
-                                <th><strong>ANIMAL CATEGORY:</strong></th>
-                                <th><strong>ANIMAL NAME:</strong></th>
-                                <th><strong>ANIMAL LOCATION:</strong></th>
-                                <th><strong>RANGERS NAME:</strong></th>
-                                <th><strong>SIGHTING TIME:</strong></th>
-                                <th><strong>DELETE FUNCTION:</strong></th>
+                               <tr>
+                                  <th><strong>ANIMAL CATEGORY:</strong></th>
+                                  <th><strong>ANIMAL NAME:</strong></th>
+                                  <th><strong>ANIMAL LOCATION:</strong></th>
+                                  <th><strong>RANGERS NAME:</strong></th>
+                                  <th><strong>SIGHTING TIME:</strong></th>
+                                 <th><strong>DELETE FUNCTION:</strong></th>
                               </tr>
                             </thead>
                             <tbody>
                                  {{#each sighting}}
-                                        <tr>
-                                            <td><strong>{{animal_category}}</strong></td>
-                                            <td><strong>{{animal_name}}</strong></td>
-                                            <td>
-                                                ZONES_NAME:<strong>{{zones_name}}</strong><br>
-                                                ZONES_DESCRIPTION:<strong>{{zones_descriptions}}</strong><br>
-                                                ZONES_QUADRANT:<strong>{{zones_quadrant}}</strong><br>
-                                            </td>
-                                            <td>
+                                     <tr>
+                                         <td><strong>{{animal_category}}</strong></td>
+                                         <td><strong>{{animal_name}}</strong></td>
+                                         <td>
+                                            ZONES_NAME:<strong>{{zones_name}}</strong><br>
+                                            ZONES_DESCRIPTION:<strong>{{zones_descriptions}}</strong><br>
+                                            ZONES_QUADRANT:<strong>{{zones_quadrant}}</strong><br>
+                                         </td>
+
+                                         <td>
                                                 RANGERS_NAME:<strong>{{rangers_name}}</strong><br>
                                                 BADGE_NUMBER:<strong>{{badge_number}}</strong><br>
                                                 RANGERS_CONTACT:<strong>{{rangers_contact}}</strong><br>
-                                            </td>
+                                         </td>
+
                                             <td>{{sighting_time}}</td>
                                             <td>
                                                 <a class="btn aqua delete-btn" title="delete {{animal_name}}"
@@ -91,7 +93,7 @@
                                                     <strong>DELETE</strong>
                                                 </a>
                                             </td>
-                                        </tr>
+                                     </tr>
                                  {{/each}}
                             </tbody>
                         </table>

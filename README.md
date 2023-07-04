@@ -117,7 +117,7 @@
 - DELETE FROM endangered_animal WHERE not deleted AND endangeredAnimalName = '';
 
 ## For the report/record sightings table
-- CREATE TABLE sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);
+- CREATE TABLE sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, zones_name varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);
 - CREATE TABLE IF NOT EXISTS sightings (sighting_id SERIAL PRIMARY KEY,animal_category varchar, animal_name varchar, location varchar, rangers_name varchar, deleted BOOLEAN DEFAULT false);
 - INSERT INTO sightings (animal_category, animal_name, location, rangers_name, deleted) VALUES (UPPER(:animal_category), :animal_name, :location, UPPER(:rangers_name), false);
 - UPDATE sightings SET deleted = (true) WHERE animal_name = (:animal_name);
@@ -171,7 +171,7 @@ There are no known bugs on this project.
       * simple:2.0.7.
 
 ## Support and contact details
-- If you need any assistance on any issues or have questions, ideas or concerns. Kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Heroes Squad App project.
+- If you need any assistance on any issues or have questions, ideas or concerns. Kindly contact me through email: vyda2002us@gmail.com to make a contribution to the code or for any assistance on the Wildlife Tracker App project.
 
 ## GitHub URL Link
 - To be able to view the project click on https://github.com/dmuthui/-MoringaSchoolJava-Week3IP-WildLifeTrackerApplication.git
