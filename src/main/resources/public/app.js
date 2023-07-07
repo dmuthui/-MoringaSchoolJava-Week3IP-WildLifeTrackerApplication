@@ -5,8 +5,8 @@ $(document).ready(function() {
   // Typed.js for typing effect
   var typed = new Typed("#type", {
     strings: [
-      "<span style='color:black;'>Wildlife Tracker</span>",
-      "<span style='color:black;'>An application that allows Rangers to track wildlife sightings in the area on every occurrence and record.</span>"
+      "<span style='color:black;'>Wildlife Tracker App</span>",
+      "<span style='color:black;'>WELCOME...The application allows wildlife rangers to track wildlife sightings in the forest on every occurrence and record.You can also register an animal, locations' and rangers' details and view the recorded information in tables.</span>"
     ],
     backSpeed: 70,
     typeSpeed: 80,
