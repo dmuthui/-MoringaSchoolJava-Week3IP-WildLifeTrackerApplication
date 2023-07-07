@@ -62,33 +62,35 @@ $(document).ready(function() {
      }
 
  }
-//SCRIPT FUNCTIONS TO LINK ANIMALS ON THE RADIO BUTTONS TO THE REGULAR/ENDANGERED ANIMAL LIST
+//SCRIPT FUNCTIONS TO LINK REGULAR ANIMAL ON THE RADIO BUTTONS TO THE REGULAR ANIMAL LIST
 
-//Endangered Animal radio button function to populate animal name from the endangered animal List
 document.addEventListener('DOMContentLoaded', function() {
-    var regularAnimalRadio = document.getElementById('regularAnimal');
-    var endangeredAnimalRadio = document.getElementById('endangeredAnimal');
-    var animalNameDropdown = document.getElementById('animal_name');
+  var regularAnimalRadio = document.getElementById('regularAnimal');
+  var endangeredAnimalRadio = document.getElementById('endangeredAnimal');
+  var animalNameDropdown = document.getElementById('animal_name');
 
-    regularAnimalRadio.addEventListener('change', function() {
-      if (regularAnimalRadio.checked) {
-          // Uncheck the endangered animal radio button
-          endangeredAnimalRadio.checked = false;
-        }
-        // Make an AJAX request to fetch the list of regular animals
-        fetch('/regular-animals')
-            .then(response => response.json())
-            .then(data => {
-                // Update the animal name dropdown with the fetched data
-                animalNameDropdown.innerHTML = '';
-                data.forEach(animal => {
-                    var option = document.createElement('option');
-                    option.textContent = animal.animalName;
-                    animalNameDropdown.appendChild(option);
-                });
-            })
-            .catch(error => console.log(error));
-    });
+  regularAnimalRadio.addEventListener('change', function() {
+    if (regularAnimalRadio.checked) {
+      // Uncheck the endangered animal radio button
+      endangeredAnimalRadio.checked = false;
+
+      // Make an AJAX request to fetch the list of regular animals
+      fetch('/regular-animals')
+        .then(response => response.json())
+        .then(data => {
+          // Update the animal name dropdown with the fetched data
+          animalNameDropdown.innerHTML = '';
+          data.forEach(animal => {
+            var option = document.createElement('option');
+            option.textContent = animal.animalName;
+            animalNameDropdown.appendChild(option);
+          });
+        })
+        .catch(error => console.log(error));
+    }
+  });
+
+
 //Endangered Animal radio button function to populate animal name from the endangered animal List
     endangeredAnimalRadio.addEventListener('change', function() {
         if (endangeredAnimalRadio.checked) {
@@ -112,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-//For searching anything on the pages with a table
+//For searching anything on the pages within a table using bootstrap datatables.
 $(document).ready( function () {
     $('#animalsList').DataTable();
     $('#locationList').DataTable();
