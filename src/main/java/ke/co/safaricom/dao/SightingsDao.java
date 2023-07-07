@@ -1,12 +1,12 @@
 package ke.co.safaricom.dao;
 
 import ke.co.safaricom.config.Database;
-import ke.co.safaricom.model.EndangeredAnimal;
-import ke.co.safaricom.model.RegularAnimal;
-import ke.co.safaricom.model.Sightings;
+import ke.co.safaricom.dto.SightingDto;
+import ke.co.safaricom.model.*;
 import org.sql2o.Connection;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 
 public class SightingsDao {
@@ -28,20 +28,33 @@ public class SightingsDao {
             System.out.println("Error adding sighting: " + ex.getMessage());
          }
       }
+
  //RETRIEVES A LIST OF ALL THE SIGHTINGS FROM THE DATABASE
-    public static List<Sightings> getAllSightings() {
-        List<Sightings> allSightings = null;
-        try (Connection db = Database.getConnect().open()) {
-            String sightings = "SELECT * FROM sightings WHERE not deleted;";
-            allSightings = db.createQuery(sightings)
-                    .executeAndFetch(Sightings.class);
-        } catch (Exception error) {
-            System.out.println(allSightings);
-            System.out.println(error.getMessage());
-            return allSightings;
-        }
-        return allSightings;
-    }
+ public static List<SightingDto> getAllSightings() {
+     ArrayList<SightingDto> output = new ArrayList<>();
+     List<Sightings> allSightings = null;
+     try (Connection db = Database.getConnect().open()) {
+         String sightings = "SELECT * FROM sightings WHERE not deleted;";
+         allSightings = db.createQuery(sightings)
+                 .executeAndFetch(Sightings.class);
+         for(Sightings sighting: allSightings){
+             // todo: get location
+             Locations zone = LocationsDao.getLocationByZoneName(sighting.getZones_name());
+             // todo: get ranger
+             Rangers ranger = RangersDao.getRangerByRangerName(sighting.getRangers_name());
+             SightingDto dto = new SightingDto();
+             dto.setLocation(zone);
+             dto.setRanger(ranger);
+             dto.setSighting(sighting);
+             output.add(dto);
+         }
+     } catch (Exception error) {
+         System.out.println(error.getMessage());
+         return output;
+     }
+     return output;
+ }
+
       //DELETES A SIGHTING FROM THE DATABASE
       public static void deleteSighting(String animal_name ){
         try(Connection db = Database.getConnect().open()){

@@ -2,6 +2,7 @@ package ke.co.safaricom;
 
 import com.google.gson.GsonBuilder;
 import ke.co.safaricom.dao.*;
+import ke.co.safaricom.dto.SightingDto;
 import ke.co.safaricom.model.*;
 import org.apache.hadoop.shaded.com.google.gson.Gson;
 import spark.ModelAndView;
@@ -139,13 +140,11 @@ public class App {
         // Define route for sighting list page
         get("/sighting-list", (req, res) -> {
             // Get the list of sightings from the database
-            Map<String, Object> sightingList = new HashMap<>();
+            Map<String, List <SightingDto>> model = new HashMap<>();
             // Render the sighting list template with the sightings data
-            sightingList.put("sighting", SightingsDao.getAllSightings());
-            sightingList.put("location", LocationsDao.getDescriptionsandQuadrant());
-            sightingList.put("ranger", RangersDao.getBadgeNumberAndContact());
-
-            return new ModelAndView(sightingList, "sightingList.hbs");
+            List <SightingDto> sightingLists = SightingsDao.getAllSightings();
+            model.put("sightingList", sightingLists);
+            return new ModelAndView(model, "sightingList.hbs");
         }, engine);
 
 

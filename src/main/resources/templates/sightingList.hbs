@@ -53,57 +53,55 @@
                 </div>
             </div>
         </nav>
-        <div class="table-container">
-            <div class="table-column">
-                {{#if sighting}}
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-text light-grey text-left" id="sightingList">
-                            <thead class="thead-green">
-                               <tr>
-                                  <th><strong>ANIMAL CATEGORY:</strong></th>
-                                  <th><strong>ANIMAL NAME:</strong></th>
-                                  <th><strong>ANIMAL LOCATION:</strong></th>
-                                  <th><strong>RANGERS NAME:</strong></th>
-                                  <th><strong>SIGHTING TIME:</strong></th>
-                                 <th><strong>DELETE FUNCTION:</strong></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                 {{#each sighting}}
-                                     <tr>
-                                         <td><strong>{{animal_category}}</strong></td>
-                                         <td><strong>{{animal_name}}</strong></td>
-                                         <td>
-                                            ZONES_NAME:<strong>{{zones_name}}</strong><br>
-                                            ZONES_DESCRIPTION:<strong>{{zones_descriptions}}</strong><br>
-                                            ZONES_QUADRANT:<strong>{{zones_quadrant}}</strong><br>
-                                         </td>
+        <div class="table-column">
+            {{#if sightingList}}
+                <div class="table-responsive">
+                    <table class="table table-bordered table-text light-grey text-left" id="sightingList">
+                        <thead class="thead-green">
+                        <tr>
+                            <th><strong>ANIMAL CATEGORY:</strong></th>
+                            <th><strong>ANIMAL NAME:</strong></th>
+                            <th><strong>ANIMAL LOCATION:</strong></th>
+                            <th><strong>RANGERS NAME:</strong></th>
+                            <th><strong>SIGHTING TIME:</strong></th>
+                            <th><strong>DELETE FUNCTION:</strong></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each sightingList}}
+                            <tr>
+                                <td><strong>{{sighting.animal_category}}</strong></td>
+                                <td><strong>{{sighting.animal_name}}</strong></td>
+                                <td>
+                                    ZONES NAME: <strong style="color: green;">{{location.zones_name}}</strong><br>
+                                    DESCRIPTION: <strong style="color: green;">{{location.zones_descriptions}}</strong><br>
+                                    QUADRANT: <strong style="color: green;">{{location.zones_quadrant}}</strong><br>
+                                </td>
 
-                                         <td>
-                                                RANGERS_NAME:<strong>{{rangers_name}}</strong><br>
-                                                BADGE_NUMBER:<strong>{{badge_number}}</strong><br>
-                                                RANGERS_CONTACT:<strong>{{rangers_contact}}</strong><br>
-                                         </td>
+                                <td>
+                                    RANGERS NAME:<strong style="color: green;">{{ranger.rangers_name}}</strong><br>
+                                    BADGE NUMBER:<strong style="color: green;">{{ranger.badge_number}}</strong><br>
+                                    CONTACT:<strong style="color: green;">{{ranger.rangers_contact}}</strong><br>
+                                </td>
 
-                                            <td>{{sighting_time}}</td>
-                                            <td>
-                                                <a class="btn aqua delete-btn" title="delete {{animal_name}}"
-                                                   type="button" href="/delete-animal_name/:animal_name{{animal_name}}"
-                                                   onclick="confirmDelete('{{animal_name}}')">
-                                                    <strong>DELETE</strong>
-                                                </a>
-                                            </td>
-                                     </tr>
-                                 {{/each}}
-                            </tbody>
-                        </table>
-                    </div>
-                {{else}}
-                    <div class="no-data">
-                        <strong>There is no sighting that has currently been reported or recorded. Please Add Animal Sighting using the link above.</strong>
-                    </div>
-                {{/if}}
-            </div>
+                                <td><strong>{{sighting.sighting_time}}</strong></td>
+                                <td>
+                                    <a class="btn aqua delete-btn" title="delete {{sighting.animal_name}}"
+                                       type="button" href="/delete-animal_name/:animal_name{{sighting.animal_name}}"
+                                       onclick="confirmDelete('{{sighting.animal_name}}')">
+                                        <strong>DELETE</strong>
+                                    </a>
+                                </td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            {{else}}
+                <div class="no-data">
+                    <strong>There is no sighting that has currently been reported or recorded. Please Add Animal Sighting using the link above.</strong>
+                </div>
+            {{/if}}
         </div>
     </div>
 {{/partial}}

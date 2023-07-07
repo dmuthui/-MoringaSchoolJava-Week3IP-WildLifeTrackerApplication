@@ -42,19 +42,20 @@ public class LocationsDao {
         return allLocations;
     }
 
-    //RETRIEVES A LIST OF ALL THE DESCRIPTIONS AND QUADRANTS FROM THE DATABASE
-    public static List<Locations> getDescriptionsandQuadrant() {
-        List<Locations> allDescriptionsandQuadrant = null;
+    //RETRIEVES A LIST OF EACH ZONE WITH THE DETAILS FROM THE DATABASE
+    public static Locations getLocationByZoneName(String zones_name) {
+        Locations location = null;
         try (Connection db = Database.getConnect().open()) {
-            String Locations = "SELECT zones_name, zones_descriptions, zones_quadrant FROM locations";
-            allDescriptionsandQuadrant = db.createQuery(Locations).executeAndFetch(Locations.class);
+            String query = "SELECT * FROM locations WHERE zones_name =:zones_name AND NOT deleted";
+            location = db.createQuery(query)
+                    .addParameter("zones_name", zones_name )
+                    .executeAndFetchFirst(Locations.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
-            return allDescriptionsandQuadrant;
+            return location;
         }
-        return allDescriptionsandQuadrant;
+        return location;
     }
-
 
     //DELETES A LOCATION FROM THE DATABASE
     public static void deleteLocations(String zones_name) {

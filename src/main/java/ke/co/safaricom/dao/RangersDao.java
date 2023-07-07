@@ -41,19 +41,20 @@ public class RangersDao {
         return allRangers;
     }
 
-    //RETRIEVES A LIST OF ALL THE BADGE NUMBERS AND CONTACTS FROM THE DATABASE
-    public static List<Rangers> getBadgeNumberAndContact() {
-        List<Rangers> allBadgeNumberAndContact = null;
+    //RETRIEVES A LIST OF EACH RANGER WITH THEIR DETAILS FROM THE DATABASE
+    public static Rangers getRangerByRangerName(String rangers_name) {
+        Rangers ranger = null;
         try (Connection db = Database.getConnect().open()) {
-            String Rangers = "SELECT rangers_name, badge_number, rangers_contact FROM rangers";
-            allBadgeNumberAndContact = db.createQuery(Rangers).executeAndFetch(Rangers.class);
+            String query = "SELECT * FROM rangers WHERE rangers_name =:rangers_name AND NOT deleted";
+            ranger = db.createQuery(query)
+                    .addParameter("rangers_name", rangers_name )
+                    .executeAndFetchFirst(Rangers.class);
         } catch (Exception error) {
             System.out.println(error.getMessage());
-            return allBadgeNumberAndContact;
+            return ranger;
         }
-        return allBadgeNumberAndContact;
+        return ranger;
     }
-
     //DELETES A RANGER FROM THE DATABASE
     public static void deleteRangers(String rangers_name){
         try(Connection db = Database.getConnect().open()){

@@ -70,9 +70,9 @@
                             <tbody>
                             {{#each location}}
                                 <tr>
-                                    <td><strong>{{zones_name}}</strong></td>
-                                    <td><strong>{{zones_descriptions}}</strong></td>
-                                    <td><strong>{{zones_quadrant}}</strong></td>
+                                    <td><strong style="color: green;">{{zones_name}}</strong></td>
+                                    <td><strong style="color: green;">{{zones_descriptions}}</strong></td>
+                                    <td><strong style="color: green;">{{zones_quadrant}}</strong></td>
                                     <td><strong>{{location_sightings}}</strong></td>
                                     <td>
                                         <a class="btn aqua delete-btn" title="delete {{zones_name}}" type="button" href="/delete-zones_name/:zones_name{{zones_name}}" onclick="confirmedDelete('{{zones_name}}')">
