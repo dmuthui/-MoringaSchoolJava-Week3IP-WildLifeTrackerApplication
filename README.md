@@ -95,7 +95,17 @@
 ## Psql commands used include:
 - CREATE DATABASE wildlife_tracker;
    * \l -lists the database that have been created
-   * \c -connects to the created database
+   * \c wildlife_tracker - connects to the created database
+
+## Tables in the Wildlife Tracker App
+   There are five tables that are in this project namely:
+   * Regular animals table.
+   * Endangered animals table.
+   * Sightings table.
+   * Rangers table.
+   * Locations table.
+   
+   These tables have been implemented using the SQL commands as below for each:
 
 ## For Regular Animal table
 - CREATE TABLE regular_animal(regular_animal_id SERIAL PRIMARY KEY, animalName varchar, health varchar, age varchar, deleted boolean default false);
