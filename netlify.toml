@@ -1,3 +1,0 @@
-[build]
-command = "./gradlew build"
-publish = "/e/MoringaSchoolJava/Week3IP-WildLifeTrackerApplication/build"
