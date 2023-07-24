@@ -11,7 +11,7 @@ COPY --chown=gradle:gradle . .
 RUN gradle clean build --no-daemon
 
 # Stage 2: Create the runtime image
-FROM openjdk:17
+FROM openjdk:11
 
 # Expose port 8080 to the host machine
 EXPOSE 8080
@@ -20,7 +20,7 @@ EXPOSE 8080
 RUN mkdir /app
 
 # Copy the built JAR file from the previous build stage to the /app directory inside the container
-COPY --from=build /home/gradle/src/build/libs/your-application.jar /app/app.jar
+COPY --from=build /home/gradle/src/build/libs/Week3IP-WildLifeTrackerApplication-1.0-SNAPSHOT.jar /app/app.jar
 
 # Set the entry point for the container to run the Java application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
