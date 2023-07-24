@@ -8,10 +8,10 @@ WORKDIR /home/gradle/src
 COPY --chown=gradle:gradle . .
 
 # Build the Java Gradle application (without using the Gradle daemon)
-RUN gradle build --no-daemon
+RUN gradle clean build --no-daemon
 
 # Stage 2: Create the runtime image
-FROM openjdk:11
+FROM openjdk:17
 
 # Expose port 8080 to the host machine
 EXPOSE 8080
@@ -20,7 +20,7 @@ EXPOSE 8080
 RUN mkdir /app
 
 # Copy the built JAR file from the previous build stage to the /app directory inside the container
-COPY --from=build /home/gradle/src/build/libs/*.jar /app/app.jar
+COPY --from=build /home/gradle/src/build/libs/your-application.jar /app/app.jar
 
 # Set the entry point for the container to run the Java application
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
