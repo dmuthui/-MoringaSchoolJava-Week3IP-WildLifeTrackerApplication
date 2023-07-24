@@ -1,11 +1,10 @@
 # Stage 1: Build the Java Gradle application
-FROM docker.io/library/gradle:8.2.1-jdk8-alpine AS build
+FROM gradle:latest AS build
 
 # Set the working directory inside the container
 WORKDIR /home/gradle/src
 
 # Copy the contents of the current directory into the container
-# The .dockerignore file should be used to exclude unnecessary files from the build context
 COPY --chown=gradle:gradle . .
 
 # Build the Java Gradle application (without using the Gradle daemon)
