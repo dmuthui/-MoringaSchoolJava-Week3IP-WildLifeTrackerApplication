@@ -30,6 +30,6 @@ test {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'com.example.App'
+        attributes 'Main-Class': 'ke.co.safaricom.App'
     }
 }
