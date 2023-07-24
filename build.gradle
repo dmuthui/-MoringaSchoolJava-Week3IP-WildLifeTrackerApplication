@@ -28,6 +28,8 @@ test {
     useJUnitPlatform()
 }
 
+sourceCompatibility = 11
+
 jar {
     manifest {
         attributes 'Main-Class': 'ke.co.safaricom.App'
