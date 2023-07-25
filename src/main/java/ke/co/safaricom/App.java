@@ -5,12 +5,19 @@ import ke.co.safaricom.dao.*;
 import ke.co.safaricom.dto.SightingDto;
 import ke.co.safaricom.model.*;
 import org.apache.hadoop.shaded.com.google.gson.Gson;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import spark.ModelAndView;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
-
+import java.io.IOException;
+import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static spark.Spark.*;
 
@@ -140,12 +147,56 @@ public class App {
         // Define route for sighting list page
         get("/sighting-list", (req, res) -> {
             // Get the list of sightings from the database
-            Map<String, List <SightingDto>> model = new HashMap<>();
+            List<SightingDto> sightingLists = SightingsDao.getAllSightings();
+
             // Render the sighting list template with the sightings data
-            List <SightingDto> sightingLists = SightingsDao.getAllSightings();
+            Map<String, Object> model = new HashMap<>();
             model.put("sightingList", sightingLists);
             return new ModelAndView(model, "sightingList.hbs");
         }, engine);
+
+// Define route for downloading the sightings data in Excel format
+        get("/download-sightings", (req, res) -> {
+            // Get the list of sightings from the database
+            List<SightingDto> sightingLists = SightingsDao.getAllSightings();
+
+            // Create a new Excel workbook and sheet
+            Workbook workbook = new XSSFWorkbook();
+            Sheet sheet = workbook.createSheet("Sightings");
+
+            // Create a header row
+            Row headerRow = sheet.createRow(0);
+            headerRow.createCell(0).setCellValue("Animal Category");
+            headerRow.createCell(1).setCellValue("Animal Name");
+            headerRow.createCell(2).setCellValue("Location");
+            headerRow.createCell(3).setCellValue("Ranger Name");
+            headerRow.createCell(4).setCellValue("Sighting Time");
+
+            // Populate the data rows
+            int rowIndex = 1;
+            for (SightingDto sighting : sightingLists) {
+                Row dataRow = sheet.createRow(rowIndex++);
+                dataRow.createCell(0).setCellValue(sighting.getSighting().getAnimal_category());
+                dataRow.createCell(1).setCellValue(sighting.getSighting().getAnimal_name());
+                dataRow.createCell(2).setCellValue(sighting.getLocation().getZones_name());
+                dataRow.createCell(3).setCellValue(sighting.getRanger().getRangers_name());
+                dataRow.createCell(4).setCellValue(sighting.getSighting().getSighting_time());
+            }
+
+            // Set the response headers to indicate it's an Excel file
+            res.header("Content-Disposition", "attachment; filename=SightingsReport.xlsx");
+            res.type("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+
+            // Stream the Excel data to the client
+            try (OutputStream outputStream = res.raw().getOutputStream()) {
+                workbook.write(outputStream);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            // Return null to end the response
+            return null;
+        });
 
 
 
