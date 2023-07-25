@@ -52,6 +52,7 @@
 * Regular animal or Endangered Animal species
 * Location (Conveyed in any manner chosen, e.g., "Zone A", "Near the River", "NE Quadrant", or latitude and longitude values)
 * Ranger Name:Ranger's details should include contact information, a badge number, etc
+* You can also download a report in excel format of the reported/recorded sightings and sort the record in Excel format.
 
 
 ## **Expected output is either**
