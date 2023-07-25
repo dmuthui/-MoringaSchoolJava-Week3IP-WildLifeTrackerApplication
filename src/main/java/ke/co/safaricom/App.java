@@ -14,10 +14,17 @@ import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.io.IOException;
 import java.io.OutputStream;
-import java.time.LocalDateTime;
 import java.util.*;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.io.OutputStream;
+import java.io.IOException;
+
 
 import static spark.Spark.*;
 
@@ -172,14 +179,28 @@ public class App {
             headerRow.createCell(3).setCellValue("Ranger Name");
             headerRow.createCell(4).setCellValue("Sighting Time");
 
+            // Create the date-time format
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
             // Populate the data rows
             int rowIndex = 1;
             for (SightingDto sighting : sightingLists) {
                 Row dataRow = sheet.createRow(rowIndex++);
                 dataRow.createCell(0).setCellValue(sighting.getSighting().getAnimal_category());
                 dataRow.createCell(1).setCellValue(sighting.getSighting().getAnimal_name());
-                dataRow.createCell(2).setCellValue(sighting.getLocation().getZones_name());
-                dataRow.createCell(3).setCellValue(sighting.getRanger().getRangers_name());
+
+            // Combine zone name, zone description, and zone quadrant into a single string
+                String zoneInfo = sighting.getLocation().getZones_name() + " - " +
+                        sighting.getLocation().getZones_descriptions() + " - " +
+                        sighting.getLocation().getZones_quadrant();
+                dataRow.createCell(2).setCellValue(zoneInfo);
+
+            // Combine ranger's name, badge number, and contact into a single string
+                String rangerInfo = sighting.getRanger().getRangers_name() + " - " +
+                        sighting.getRanger().getBadge_number() + " - " +
+                        sighting.getRanger().getRangers_contact();
+                dataRow.createCell(3).setCellValue(rangerInfo);
+
                 dataRow.createCell(4).setCellValue(sighting.getSighting().getSighting_time());
             }
 
@@ -197,8 +218,6 @@ public class App {
             // Return null to end the response
             return null;
         });
-
-
 
     //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
         Gson gson = new Gson();
