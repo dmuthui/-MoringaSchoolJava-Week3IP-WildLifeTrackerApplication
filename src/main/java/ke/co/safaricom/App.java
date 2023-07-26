@@ -24,19 +24,19 @@ import java.util.Date;
 import java.util.List;
 import java.io.OutputStream;
 import java.io.IOException;
-
-
+import java.util.HashMap;
+import java.util.Map;
 import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
-     // To SERVE THE STATIC FILES LOCATION
+        // To SERVE THE STATIC FILES LOCATION
         staticFileLocation("/public");
 
-     //INITIALIZATION OF THE HANDLEBARS
+        //INITIALIZATION OF THE HANDLEBARS
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
-    //THE ROUTE TO VIEW HOME PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
+        //THE ROUTE TO VIEW HOME PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
         get("/", (request, response) -> {
             Map<String, Object> WildLifeTrackerList = new HashMap<>();
             EndangeredAnimalDao.getStarted();
@@ -47,17 +47,17 @@ public class App {
             return new ModelAndView(new HashMap<>(), "home.hbs");
         }, engine);
 
-     //THE ROUTE TO VIEW HOME PAGE
+        //THE ROUTE TO VIEW HOME PAGE
         get("/", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "home.hbs");
         }, engine);
 
-    //THE ROUTE TO SERVE ADD ANIMAL AFTER CLICKING ADD ANIMAL BUTTON
+        //THE ROUTE TO SERVE ADD ANIMAL AFTER CLICKING ADD ANIMAL BUTTON
         get("/add-animal", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "addAnimalForm.hbs");
         }, engine);
 
-    //ROUTE TO SERVE POSTING OF ADD REGULAR ANIMAL TO THE DATABASE
+        //ROUTE TO SERVE POSTING OF ADD REGULAR ANIMAL TO THE DATABASE
         post("/add-animal", (request, response) -> {
             // Initializing the regular animal
             Integer regular_animal_id = null;
@@ -70,14 +70,14 @@ public class App {
             response.redirect("/regular-animal-list");
             return null;
         });
-    //THE ROUTE TO HANDLE GETTING ALL REGULAR ANIMALS FROM DATABASE ON THE ANIMALS LIST
+        //THE ROUTE TO HANDLE GETTING ALL REGULAR ANIMALS FROM DATABASE ON THE ANIMALS LIST
         get("/regular-animal-list", (req, res) -> {
             Map<String, List<RegularAnimal>> regularAnimalList = new HashMap<>();
             regularAnimalList.put("regularAnimals", RegularAnimalDao.getAllRegularAnimals());
             return new ModelAndView(regularAnimalList, "animalsList.hbs");
         }, engine);
 
-     //DELETING A REGULAR ANIMAL FROM THE ANIMALS LIST PAGE
+        //DELETING A REGULAR ANIMAL FROM THE ANIMALS LIST PAGE
         get("/delete-regularAnimal/:animalName", (req, res) -> {
             String animalName = req.params(":animalName");
             RegularAnimalDao.deleteRegularAnimal(animalName);
@@ -85,12 +85,12 @@ public class App {
             return null;
         }, engine);
 
-    //THE ROUTE TO SERVE ADD ENDANGERED ANIMAL AFTER CLICKING ADD ADD ENDANGERED ANIMAL BUTTON
+        //THE ROUTE TO SERVE ADD ENDANGERED ANIMAL AFTER CLICKING ADD ADD ENDANGERED ANIMAL BUTTON
         get("/add-endangered", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "endangeredAnimalForm.hbs");
         }, engine);
 
-    //ROUTE TO SERVE POSTING OF ADD ENDANGERED ANIMAL TO THE DATABASE
+        //ROUTE TO SERVE POSTING OF ADD ENDANGERED ANIMAL TO THE DATABASE
         post("/add-endangered-animal", (request, response) -> {
             // Initializing the endangered animal
             Integer endangered_animal_id = null;
@@ -104,14 +104,14 @@ public class App {
             return null;
         });
 
-    // THE ROUTE TO HANDLE GETTING ALL ENDANGERED ANIMALS FROM DATABASE ON THE ANIMALS LIST
+        // THE ROUTE TO HANDLE GETTING ALL ENDANGERED ANIMALS FROM DATABASE ON THE ANIMALS LIST
         get("/animal-list", (req, res) -> {
             Map<String, List<EndangeredAnimal>> endangeredAnimalList = new HashMap<>();
             endangeredAnimalList.put("endangeredAnimals", EndangeredAnimalDao.getAllEndangeredAnimals());
             return new ModelAndView(endangeredAnimalList, "animalsList.hbs");
         }, engine);
 
-    //DELETING AN ENDANGERED ANIMAL FROM THE ANIMALS LIST PAGE
+        //DELETING AN ENDANGERED ANIMAL FROM THE ANIMALS LIST PAGE
         get("/delete-endangeredAnimalName/:endangeredAnimalName", (req, res) -> {
             String endangeredAnimalName = req.params(":endangeredAnimalName");
             EndangeredAnimalDao.deleteEndangeredAnimal(endangeredAnimalName);
@@ -119,7 +119,7 @@ public class App {
             return null;
         }, engine);
 
-    //THE ROUTE TO SERVE ADD SIGHTING AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
+        //THE ROUTE TO SERVE ADD SIGHTING AFTER CLICKING ADD REPORT/RECORD SIGHTINGS BUTTON
         get("/add-sighting", (req, res) -> {
             // Retrieve data for rendering the form
             Map<String, Object> LocationsList = new HashMap<>();
@@ -130,7 +130,7 @@ public class App {
         }, engine);
 
 
-    //ROUTE TO SERVE POSTING OF REPORT/RECORD A SIGHTING TO THE DATABASE
+        //ROUTE TO SERVE POSTING OF REPORT/RECORD A SIGHTING TO THE DATABASE
         // Define route for sighting form submission
         post("/add-sighting", (request, response) -> {
             // Get form inputs
@@ -142,7 +142,7 @@ public class App {
             Date sighting_time = new Date();
             Boolean deleted = false;
             // Create a new sighting object
-            Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, zones_name, rangers_name, sighting_time,  deleted);
+            Sightings additionalSighting = new Sightings(sighting_id, animal_category, animal_name, zones_name, rangers_name, sighting_time, deleted);
             // Add the sighting to the database
             SightingsDao.addSighting(additionalSighting);
             // Redirect to the sighting list page
@@ -150,7 +150,7 @@ public class App {
             return null;
         });
 
-    // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
+        // THE ROUTE TO HANDLE GETTING ALL SIGHTINGS FROM DATABASE ON THE SIGHTING LIST
         // Define route for sighting list page
         get("/sighting-list", (req, res) -> {
             // Get the list of sightings from the database
@@ -189,13 +189,13 @@ public class App {
                 dataRow.createCell(0).setCellValue(sighting.getSighting().getAnimal_category());
                 dataRow.createCell(1).setCellValue(sighting.getSighting().getAnimal_name());
 
-            // Combine zone name, zone description, and zone quadrant into a single string
+                // Combine zone name, zone description, and zone quadrant into a single string
                 String zoneInfo = sighting.getLocation().getZones_name() + " - " +
                         sighting.getLocation().getZones_descriptions() + " - " +
                         sighting.getLocation().getZones_quadrant();
                 dataRow.createCell(2).setCellValue(zoneInfo);
 
-            // Combine ranger's name, badge number, and contact into a single string
+                // Combine ranger's name, badge number, and contact into a single string
                 String rangerInfo = sighting.getRanger().getRangers_name() + " - " +
                         sighting.getRanger().getBadge_number() + " - " +
                         sighting.getRanger().getRangers_contact();
@@ -219,20 +219,20 @@ public class App {
             return null;
         });
 
-    //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
+        //ROUTE FOR INITIALING GSON THAT ALLOWS LINKING OF NAMES TO THE SIGHTINGS FORM
         Gson gson = new Gson();
-    // Endpoint for fetching endangered animals
+        // Endpoint for fetching endangered animals
         get("/regular-animals", (req, res) -> {
             List<RegularAnimal> regularAnimals = RegularAnimalDao.getAllRegularAnimals();
             return gson.toJson(regularAnimals);
         });
-    // Endpoint for fetching endangered animals
+        // Endpoint for fetching endangered animals
         get("/endangered-animals", (req, res) -> {
             List<EndangeredAnimal> endangeredAnimals = EndangeredAnimalDao.getAllEndangeredAnimals();
             return gson.toJson(endangeredAnimals);
         });
 
-    //DELETING A SITTING FROM THE ANIMALS LIST PAGE
+        //DELETING A SITTING FROM THE ANIMALS LIST PAGE
         get("/delete-animal_name/:animal_name", (req, res) -> {
             String animal_name = req.params(":animal_name");
             SightingsDao.deleteSighting(animal_name);
@@ -240,12 +240,12 @@ public class App {
             return null;
         }, engine);
 
-    //THE ROUTE TO SERVE ADD RANGERS AFTER CLICKING ADD RANGER BUTTON
+        //THE ROUTE TO SERVE ADD RANGERS AFTER CLICKING ADD RANGER BUTTON
         get("/add-rangers", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "rangersForm.hbs");
         }, engine);
 
-    //ROUTE TO SERVE POSTING OF RANGERS  TO THE DATABASE
+        //ROUTE TO SERVE POSTING OF RANGERS  TO THE DATABASE
         // Define route for rangers form submission
         post("/add-ranger", (request, response) -> {
             // Get form inputs
@@ -265,7 +265,7 @@ public class App {
             return null;
         });
 
-    // THE ROUTE TO HANDLE GETTING ALL RANGERS FROM DATABASE ON THE RANGERS LIST
+        // THE ROUTE TO HANDLE GETTING ALL RANGERS FROM DATABASE ON THE RANGERS LIST
         // Define route for Rangers list page
         get("/rangers-list", (req, res) -> {
             // Get the list of rangers from the database
@@ -275,7 +275,7 @@ public class App {
             return new ModelAndView(rangersList, "rangersList.hbs");
         }, engine);
 
-    //DELETING A RANGER FROM THE RANGERS LIST PAGE
+        //DELETING A RANGER FROM THE RANGERS LIST PAGE
         get("/delete-rangers_name/:rangers_name", (req, res) -> {
             String rangers_name = req.params(":rangers_name");
             RangersDao.deleteRangers(rangers_name);
@@ -283,12 +283,12 @@ public class App {
             return null;
         }, engine);
 
-    //THE ROUTE TO SERVE ADD LOCATION AFTER CLICKING ADD LOCATION BUTTON
+        //THE ROUTE TO SERVE ADD LOCATION AFTER CLICKING ADD LOCATION BUTTON
         get("/add-locations", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "locationForm.hbs");
         }, engine);
 
-    //ROUTE TO SERVE POSTING OF LOCATIONS  TO THE DATABASE
+        //ROUTE TO SERVE POSTING OF LOCATIONS  TO THE DATABASE
         // Define route for location form submission
         post("/add-zone", (request, response) -> {
             // Get form inputs
@@ -307,7 +307,7 @@ public class App {
             return null;
         });
 
-    // THE ROUTE TO HANDLE GETTING ALL LOCATIONS FROM DATABASE ON THE LOCATIONS LIST
+        // THE ROUTE TO HANDLE GETTING ALL LOCATIONS FROM DATABASE ON THE LOCATIONS LIST
         // Define route for Locations list page
         get("/locations-list", (req, res) -> {
             // Get the list of Locations from the database
@@ -317,7 +317,7 @@ public class App {
             return new ModelAndView(LocationsList, "locationList.hbs");
         }, engine);
 
-    //DELETING A LOCATION FROM THE LOCATIONS LIST PAGE
+        //DELETING A LOCATION FROM THE LOCATIONS LIST PAGE
         get("/delete-zones_name/:zones_name", (req, res) -> {
             String zones_name = req.params(":zones_name");
             LocationsDao.deleteLocations(zones_name);
@@ -326,14 +326,11 @@ public class App {
         }, engine);
 
 
-
-    //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
+        //THE ROUTE TO SERVE ABOUT APP PAGE AFTER CLICKING ON ABOUT APP PAGE ON HOME PAGE
         get("/about-app-page", (request, response) -> {
             return new ModelAndView(new HashMap<>(), "aboutAppPage.hbs");
         }, engine);
 
-    //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
-
+        //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
     }
-
 }
