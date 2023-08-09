@@ -13,7 +13,12 @@
             </div>
             <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                <div style="position: relative;">
+                    <input type="password" id="password" name="password" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+                    <span style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordVisibility()">
+                    <i class="far fa-eye" id="eye-icon"></i>
+                    </span>
+                </div>
             </div>
             <button class="btn" type="submit" style="background-color: #4CAF50; color: white; padding: 4px 8px; border: none; border-radius: 2px; cursor: pointer; font-size: 12px; margin: 0 auto; display: block;">LOGIN</button>
         </form>

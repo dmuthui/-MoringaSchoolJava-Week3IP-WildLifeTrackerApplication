@@ -382,10 +382,7 @@ public class App {
     }
 
     private static boolean isValidUser (String username, String password){
-        // Replace this with your actual authentication logic
         // For this example, we'll use hardcoded username and password
-        // You should replace these with a database or proper authentication method
-
         // Sample valid user
         String validUsername = "admin";
         String validPassword = "password";
