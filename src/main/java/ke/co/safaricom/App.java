@@ -10,6 +10,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import spark.ModelAndView;
+import spark.Session;
 import spark.template.handlebars.HandlebarsTemplateEngine;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import static spark.Spark.*;
+import spark.Session;
 
 public class App {
     public static void main(String[] args) {
@@ -37,20 +39,65 @@ public class App {
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
         //THE ROUTE TO VIEW HOME PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
-        get("/", (request, response) -> {
+        get("/login", (request, response) -> {
             Map<String, Object> WildLifeTrackerList = new HashMap<>();
             EndangeredAnimalDao.getStarted();
             LocationsDao.getStarted();
             RangersDao.getStarted();
             RegularAnimalDao.getStarted();
             SightingsDao.getStarted();
-            return new ModelAndView(new HashMap<>(), "home.hbs");
+            return new ModelAndView(new HashMap<>(), "login.hbs");
         }, engine);
 
-        //THE ROUTE TO VIEW HOME PAGE
-        get("/", (request, response) -> {
-            return new ModelAndView(new HashMap<>(), "home.hbs");
+        // Define a route for the login page
+        get("/login", (request, response) -> {
+            return new ModelAndView(new HashMap<>(), "login.hbs");
         }, engine);
+
+        // Handle login form submission
+        post("/login", (request, response) -> {
+            String username = request.queryParams("username");
+            String password = request.queryParams("password");
+
+            // Perform authentication (Replace with your actual authentication logic)
+            if (isValidUser(username, password)) {
+                Session session = request.session();
+                session.attribute("username", username);
+                response.redirect("/");
+            } else {
+                // Invalid credentials, show error message or redirect back to login page
+                response.redirect("/login");
+            }
+
+            return null;
+        });
+
+        // Define a route for the home page
+        get("/", (request, response) -> {
+            Session session = request.session();
+            String username = session.attribute("username");
+
+            // Check if the user is authenticated
+            if (username != null) {
+                // Render the dashboard page
+                Map<String, Object> model = new HashMap<>();
+                model.put("username", username);
+                return new ModelAndView(model, "home.hbs");
+            } else {
+                // Redirect to login page if not authenticated
+                response.redirect("/login");
+                return null;
+            }
+        }, engine);
+
+       // Define a route for logout
+        get("/logout", (request, response) -> {
+            Session session = request.session();
+            session.removeAttribute("username");
+            response.redirect("/login");
+            return null;
+        }, engine);
+
 
         //THE ROUTE TO SERVE ADD ANIMAL AFTER CLICKING ADD ANIMAL BUTTON
         get("/add-animal", (request, response) -> {
@@ -333,4 +380,18 @@ public class App {
 
         //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
     }
+
+    private static boolean isValidUser (String username, String password){
+        // Replace this with your actual authentication logic
+        // For this example, we'll use hardcoded username and password
+        // You should replace these with a database or proper authentication method
+
+        // Sample valid user
+        String validUsername = "admin";
+        String validPassword = "password";
+
+        return username.equals(validUsername) && password.equals(validPassword);
+    }
+
 }
+

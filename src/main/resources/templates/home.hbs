@@ -12,6 +12,7 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
@@ -37,7 +38,16 @@
                         <li class="nav-item active">
                             <a class="nav-link border border-dark rounded" href="/about-app-page"><span style="color: black;"><strong>ABOUT APP PAGE</strong></span> <span class="sr-only">(current)</span></a>
                         </li>
-                    </ul>
+                        <!-- Inside your navigation bar template, where you want to display the username and logout button -->
+                        <li class="nav-item active">
+                            {{#if username}}
+                                <div style="text-align: center;">
+                                    <p><strong>Logged in as {{username}}</strong></p>
+                                    <a class="nav-link border border-dark rounded" href="/logout" style="color: red; animation: flash 1s infinite; background-color: black; padding: 4px 8px; text-decoration: none; display: inline-block;"><span style="color: white;"><strong>LOG OUT</strong></span> <span class="sr-only">(current)</span></a>
+                                </div>
+                            {{/if}}
+                        </li>
+                      </ul>
                 </div>
             </div>
         </nav>
@@ -49,6 +59,7 @@
                             <strong style="color: yellow;" class="animate__animated animate__bounceIn fade-in animate__slower animate__delay-2s">Wildlife Animals Tracker<i class="fas fa-satellite-dish animate__animated animate__bounce animate__infinite"></i></strong>
                     </h3>
                     <h4 class="text-monospace  typeClass"><strong id="type"></strong> <i class="fas fa-bolt"></i></h4>
+
                     <div class="container">
                         <ul>
                             <a class="btn btn-warning btn-lg wide border-white rounded-pill shadow" style="color: black; border-color: white; margin-right: 200px;" href="/add-rangers">
