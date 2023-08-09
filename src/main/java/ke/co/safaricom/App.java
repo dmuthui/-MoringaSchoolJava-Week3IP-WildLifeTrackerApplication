@@ -38,7 +38,7 @@ public class App {
         //INITIALIZATION OF THE HANDLEBARS
         HandlebarsTemplateEngine engine = new HandlebarsTemplateEngine();
 
-        //THE ROUTE TO VIEW HOME PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
+        //THE ROUTE TO VIEW LOGIN PAGE WHEN AN APPLICATION IS STARTED BY INITIALIZING THE TABLES
         get("/login", (request, response) -> {
             Map<String, Object> WildLifeTrackerList = new HashMap<>();
             EndangeredAnimalDao.getStarted();
@@ -209,7 +209,7 @@ public class App {
             return new ModelAndView(model, "sightingList.hbs");
         }, engine);
 
-// Define route for downloading the sightings data in Excel format
+      // Define route for downloading the sightings data in Excel format
         get("/download-sightings", (req, res) -> {
             // Get the list of sightings from the database
             List<SightingDto> sightingLists = SightingsDao.getAllSightings();
@@ -381,6 +381,7 @@ public class App {
         //THE SEARCH PARAMETERS on every table have been implemented using jQuerry where you can also sort the table heads.
     }
 
+    //Hardcorded username and password for the login page.
     private static boolean isValidUser (String username, String password){
         // For this example, we'll use hardcoded username and password
         // Sample valid user
