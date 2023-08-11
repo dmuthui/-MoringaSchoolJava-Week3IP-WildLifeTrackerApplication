@@ -186,14 +186,16 @@ h1, h2, p, li, a {
          background-color: #4CAF50;
          color: white;
          padding: 4px 8px;
-         border: none;
-         border-radius: 2px;
+         border: solid 1.5px black;
+         border-radius: 100px;
          cursor: pointer;
          font-size: 12px;
+         transition: background-color 0.3s, border-color 0.3s;
      }
 
      .btn:hover {
-         background-color: #45a049;
+           background-color: #3f8956;
+                 border-color: #333;
      }
 
 
