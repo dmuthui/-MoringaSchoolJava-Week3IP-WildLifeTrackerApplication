@@ -198,4 +198,16 @@ h1, h2, p, li, a {
                  border-color: #333;
      }
 
+ .logout-button {
+     animation: fadeInOut 2s infinite;
+     opacity: 0;
+ }
 
+ @keyframes fadeInOut {
+     0%, 100% {
+         opacity: 0;
+     }
+     50% {
+         opacity: 1;
+     }
+ }

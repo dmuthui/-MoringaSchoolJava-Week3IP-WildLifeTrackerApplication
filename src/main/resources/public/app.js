@@ -137,3 +137,7 @@ function togglePasswordVisibility() {
             eyeIcon.classList.add("far", "fa-eye");
         }
     }
+
+    $(document).ready(function() {
+        $('.logout-button').addClass('active');
+    });
