@@ -6,7 +6,7 @@ $(document).ready(function() {
   var typed = new Typed("#type", {
     strings: [
       "<span style='color:black;'>Wildlife Tracker App</span>",
-      "<span style='color:black;'>WELCOME...The application allows wildlife rangers to track wildlife sightings in the forest on every occurrence and record.You can also register an animal, locations' and rangers' details and view the recorded information in tables.</span>"
+      "<span style='color:black;'>WELCOME...The application allows wildlife rangers to track wildlife sightings in the forest on every occurrence and record...</span>"
     ],
     backSpeed: 70,
     typeSpeed: 80,
