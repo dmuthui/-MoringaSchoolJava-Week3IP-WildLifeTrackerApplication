@@ -29,6 +29,8 @@ import java.util.HashMap;
 import java.util.Map;
 import static spark.Spark.*;
 import spark.Session;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 public class App {
     public static void main(String[] args) {
@@ -58,11 +60,27 @@ public class App {
         post("/login", (request, response) -> {
             String username = request.queryParams("username");
             String password = request.queryParams("password");
+            boolean rememberMe = request.queryParams("rememberMe") != null;
 
             // Perform authentication (Replace with your actual authentication logic)
             if (isValidUser(username, password)) {
                 Session session = request.session();
                 session.attribute("username", username);
+
+                if (rememberMe) {
+                    // Create cookies for "Remember Me"
+                    Cookie usernameCookie = new Cookie("username", username);
+                    Cookie passwordCookie = new Cookie("password", password);
+
+                    // Set the cookie's lifespan (e.g., 1 week)
+                    int maxAge = 7 * 24 * 60 * 60; // 1 week in seconds
+                    usernameCookie.setMaxAge(maxAge);
+                    passwordCookie.setMaxAge(maxAge);
+
+                    response.raw().addCookie(usernameCookie);
+                    response.raw().addCookie(passwordCookie);
+                }
+
                 response.redirect("/");
             } else {
                 // Invalid credentials, show error message or redirect back to login page
