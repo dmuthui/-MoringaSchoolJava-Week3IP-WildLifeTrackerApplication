@@ -21,7 +21,7 @@ public class RangersDao {
     public static void addRanger(Rangers additionalRanger) {
         try (Connection db = Database.getConnect().open()) {
             // Database action
-            String rangerAdd = "INSERT INTO rangers(rangers_name, badge_number, rangers_contact, rangers_description, rangers_sightings,deleted) VALUES (UPPER(:rangers_name), :badge_number, :rangers_contact,UPPER(:rangers_description),UPPER(:rangers_sightings), false)";
+            String rangerAdd = "INSERT INTO rangers(rangers_name, badge_number, rangers_contact, rangers_description, rangers_sightings,deleted) VALUES (UPPER(:rangers_name), UPPER(:badge_number), :rangers_contact,UPPER(:rangers_description),UPPER(:rangers_sightings), false)";
             db.createQuery(rangerAdd).bind(additionalRanger).executeUpdate();
         } catch (Exception error) {
             System.out.println(error.getMessage());
