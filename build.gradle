@@ -19,7 +19,8 @@ dependencies {
     implementation 'com.github.jknack:handlebars:4.1.2'
     implementation 'org.postgresql:postgresql:42.6.0'
     implementation 'org.apache.spark:spark-core_2.13:3.4.0'
-    implementation 'org.postgresql:postgresql:42.6.0'
+
+
     implementation 'org.sql2o:sql2o:1.6.0'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'org.apache.poi:poi:5.0.0'
